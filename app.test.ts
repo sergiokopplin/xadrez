@@ -18,4 +18,12 @@ describe('Chess', () => {
 
     expect(chess.board).toEqual([['x', '', '', ''], ['', 'x', '', ''], ['', '', 'x', ''], ['', '', '', 'x']])
   })
+
+  test('Should put correctly', () => {
+    const chess = makeBoard()
+
+    chess.put('x', { y: 3, x: 2 })
+
+    expect(chess.board).toEqual([['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', 'x', '']])
+  })
 })
