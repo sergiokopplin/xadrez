@@ -1,16 +1,19 @@
 import { Chess } from './app'
 
+const makeBoard = (): Chess => {
+  return new Chess()
+}
+
 describe('Chess', () => {
   test('Should construct ok', () => {
-    const makeGame = new Chess()
+    const chess = makeBoard()
 
-    expect(makeGame).toBeTruthy()
-    expect(makeGame.board).toBeTruthy()
+    expect(chess).toBeTruthy()
+    expect(chess.board).toBeTruthy()
   })
 
   test('Should return board on get', () => {
-    const makeGame = new Chess()
-
-    expect(makeGame.getBoard()).toBeTruthy()
+    const chess = makeBoard()
+    expect(chess.getBoard()).toBeTruthy()
   })
 })
