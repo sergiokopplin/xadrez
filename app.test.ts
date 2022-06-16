@@ -42,4 +42,19 @@ describe('Chess', () => {
     expect(chess.getPosition({ y: 3, x: 2 })).toEqual({ color: 'black', piece: 'x' }
     )
   })
+
+  test('Should clear board', () => {
+    const chess = makeBoard()
+
+    chess.put('x', { y: 3, x: 2 }, 'black')
+    chess.put('y', { y: 2, x: 3 }, 'black')
+    chess.clearBoard()
+
+    expect(chess.board).toEqual([
+      ['', '', '', ''],
+      ['', '', '', ''],
+      ['', '', '', ''],
+      ['', '', '', '']
+    ])
+  })
 })

@@ -43,6 +43,15 @@ export class Chess {
     return this.board[position.y][position.x] === ''
   }
 
+  clearBoard (): void {
+    this.board = [
+      ['', '', '', ''],
+      ['', '', '', ''],
+      ['', '', '', ''],
+      ['', '', '', '']
+    ]
+  }
+
   clearPosition (position: Position): void {
     this.board[position.y][position.x] = ''
   }
