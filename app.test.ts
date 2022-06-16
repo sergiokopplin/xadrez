@@ -1,33 +1,21 @@
 import { Chess } from './app'
 
-const makeBoard = (): Chess => {
-  return new Chess()
+const makeBoard = (board?: string[][]): Chess => {
+  const boardParam = board
+
+  return new Chess(boardParam)
 }
 
 describe('Chess', () => {
-  test('Should construct ok', () => {
+  test('Should construct and init properly with no custom board', () => {
     const chess = makeBoard()
 
-    expect(chess).toBeTruthy()
-
-    expect(chess.getBoard().length).toBe(8)
-    expect(chess.getBoard()[0].length).toBe(8)
-    expect(chess.getBoard()[0][0]).toBe('')
-    expect(chess.getBoard()[0][1]).toBe('')
+    expect(chess.board).toEqual([['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']])
   })
 
-  test('Should put ok', () => {
-    const chess = makeBoard()
+  test('Should construct and init properly with custom board', () => {
+    const chess = makeBoard([['x', '', '', ''], ['', 'x', '', ''], ['', '', 'x', ''], ['', '', '', 'x']])
 
-    chess.put('p', '12')
-
-    expect(chess.getBoard()[1][2]).toEqual('p')
-  })
-
-  test('Should throw on put', () => {
-    const chess = makeBoard()
-
-    expect(() => chess.put('Q', '08')).toThrowError('Invalid Put')
-    expect(() => chess.put('Q', '08')).toThrowError('Invalid Put')
+    expect(chess.board).toEqual([['x', '', '', ''], ['', 'x', '', ''], ['', '', 'x', ''], ['', '', '', 'x']])
   })
 })
