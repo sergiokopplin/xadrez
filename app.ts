@@ -42,13 +42,17 @@ export class Chess {
     return this.board[position.y][position.x] === ''
   }
 
+  clearPosition (position: Position): void {
+    this.board[position.y][position.x] = ''
+  }
+
   put (piece: Piece, position: Position, color: Color) {
     if (this.isOutOfLimits(position)) {
-      throw new Error('isOutOfLimits')
+      return new Error('isOutOfLimits')
     }
 
     if (this.hasSameColorPieceOnPosition(position, color)) {
-      throw new Error('hasSameColorPieceOnPosition')
+      return new Error('hasSameColorPieceOnPosition')
     }
 
     this.board[position.y][position.x] = { piece, color }
