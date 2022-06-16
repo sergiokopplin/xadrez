@@ -20,10 +20,16 @@ export class Chess {
     this.board = board || boardDefault
   }
 
-  put (piece: Piece, position: Position, color: Color) {
+  isOutOfLimits (position: Position): boolean {
     if (position.y >= 4 || position.x >= 4) {
-      throw new Error()
+      return true
     }
+
+    return false
+  }
+
+  put (piece: Piece, position: Position, color: Color) {
+    if (this.isOutOfLimits(position)) throw new Error()
 
     this.board[position.y][position.x] = { piece, color }
   }
