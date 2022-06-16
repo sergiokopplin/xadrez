@@ -22,8 +22,8 @@ describe('Chess', () => {
   test('Should put correctly', () => {
     const chess = makeBoard()
 
-    chess.put('x', { y: 3, x: 2 })
+    chess.put('x', { y: 3, x: 2 }, 'black')
 
-    expect(chess.board).toEqual([['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', 'x', '']])
+    expect(chess.board).toEqual([['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', { piece: 'x', color: 'black' }, '']])
   })
 })
