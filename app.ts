@@ -1,17 +1,17 @@
-type Board = number[]
+type Board = string[][]
 
 export class Chess {
-  private readonly size: number
-  public readonly board: Board
+  private readonly board: Board
 
   constructor () {
-    const dimensions = 8
-
-    this.size = dimensions * dimensions
     this.board = []
 
-    for (let index = 0; index < this.size; index++) {
-      this.board[index] = 0
+    for (let y = 0; y < 8; y++) {
+      this.board[y] = []
+
+      for (let x = 0; x < 8; x++) {
+        this.board[y][x] = ''
+      }
     }
   }
 

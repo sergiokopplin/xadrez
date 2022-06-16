@@ -9,11 +9,10 @@ describe('Chess', () => {
     const chess = makeBoard()
 
     expect(chess).toBeTruthy()
-    expect(chess.board).toBeTruthy()
-  })
 
-  test('Should return board on get', () => {
-    const chess = makeBoard()
-    expect(chess.getBoard()).toBeTruthy()
+    expect(chess.getBoard().length).toBe(8)
+    expect(chess.getBoard()[0].length).toBe(8)
+    expect(chess.getBoard()[0][0]).toBe('')
+    expect(chess.getBoard()[0][1]).toBe('')
   })
 })
