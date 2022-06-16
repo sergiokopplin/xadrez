@@ -1,6 +1,7 @@
 type Piece = string
 type Color = 'white' | 'black'
-type Board = { piece: Piece, color: Color } | string[][]
+type Square = { piece: Piece, color: Color }
+type Board = Square | string[][]
 interface Position {
   y: number
   x: number
@@ -44,6 +45,10 @@ export class Chess {
 
   clearPosition (position: Position): void {
     this.board[position.y][position.x] = ''
+  }
+
+  getPosition (position: Position): Square {
+    return this.board[position.y][position.x]
   }
 
   put (piece: Piece, position: Position, color: Color) {
