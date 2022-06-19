@@ -1,20 +1,10 @@
-import { getPositionAxis, Position } from '../utils'
+import { Position } from '../utils'
+import { isDiagonalMove, isXAxisMove, isYAxisMove } from './validations'
 
 export function canQueenMove (current: Position, next: Position): boolean {
-  const [cy, cx] = getPositionAxis(current)
-  const [ny, nx] = getPositionAxis(next)
-
-  if (cy === ny) {
-    return true
-  }
-
-  if (cx === nx) {
-    return true
-  }
-
-  if (Math.abs(cy - cx) === Math.abs(ny - nx)) {
-    return true
-  }
+  if (isYAxisMove(current, next)) return true
+  if (isXAxisMove(current, next)) return true
+  if (isDiagonalMove(current, next)) return true
 
   return false
 }

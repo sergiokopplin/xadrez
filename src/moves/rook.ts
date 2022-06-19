@@ -1,16 +1,9 @@
-import { getPositionAxis, Position } from '../utils'
+import { Position } from '../utils'
+import { isXAxisMove, isYAxisMove } from './validations'
 
 export function canRookMove (current: Position, next: Position): boolean {
-  const [cy, cx] = getPositionAxis(current)
-  const [ny, nx] = getPositionAxis(next)
-
-  if (cy === ny) {
-    return true
-  }
-
-  if (cx === nx) {
-    return true
-  }
+  if (isYAxisMove(current, next)) return true
+  if (isXAxisMove(current, next)) return true
 
   return false
 }
