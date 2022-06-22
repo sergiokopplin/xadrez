@@ -28,7 +28,14 @@ export function isDiagonalMove (current: Position, next: Position): boolean {
   const [cy, cx] = getPositionAxis(current)
   const [ny, nx] = getPositionAxis(next)
 
-  if (Math.abs(cy - cx) !== Math.abs(ny - nx)) {
+  if (isYAxisMove(current, next) || isXAxisMove(current, next)) {
+    return false
+  }
+
+  const equality = Math.abs(cy - cx) === Math.abs(ny - nx)
+  const modulus = Math.abs(cy - cx) - Math.abs(ny - nx) % 2 === 0
+
+  if (!equality && !modulus) {
     return false
   }
 
@@ -39,9 +46,23 @@ export function isMoreThanSingleSquare (current: Position, next: Position): bool
   const [cy, cx] = getPositionAxis(current)
   const [ny, nx] = getPositionAxis(next)
 
-  if (Math.abs(cy - ny) > 1 || Math.abs(cx - nx) > 1) {
-    return false
+  if (isYAxisMove(current, next)) {
+    if (Math.abs(cx - nx) > 1) {
+      return true
+    }
   }
 
-  return true
+  if (isXAxisMove(current, next)) {
+    if (Math.abs(cy - ny) > 1) {
+      return true
+    }
+  }
+
+  if (isDiagonalMove(current, next)) {
+    if (Math.abs(cy - ny) > 1 || Math.abs(cx - nx) > 1) {
+      return true
+    }
+  }
+
+  return false
 }
