@@ -56,6 +56,15 @@ export class Board {
     }
   }
 
+  public isOpponent (ourPosition: Position, theirPosition: Position): boolean {
+    const ourColor = this.inferPieceColor(ourPosition)
+    const theirColor = this.inferPieceColor(theirPosition)
+
+    if (!ourColor || !theirColor) {
+      return false
+    }
+  }
+
   public getSquare (position: Position): Square {
     const [Y, X] = getPositionAxis(position)
     const [y, x] = this.fixArrayIndex(Y, X)

@@ -45,6 +45,16 @@ describe('Board', () => {
     })
   })
 
+  describe('isOpponent', () => {
+    it('should return false when comparison with empty square', () => {
+      const { sut } = makeSut()
+
+      const square = sut.isOpponent('a1', 'd4')
+
+      expect(square).toBe(false)
+    })
+  })
+
   describe('getSquare', () => {
     it('should return an empty square correctly', () => {
       const { sut } = makeSut()
