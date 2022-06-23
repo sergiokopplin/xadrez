@@ -7,7 +7,7 @@
     "start": "node dist/app.js",
     "build": "babel src --out-dir dist --no-copy-ignored",
     "dev": "nodemon --watch 'src/' --exec 'ts-node src/app.ts' -e ts",
-    "test": "jest"
+    "test": "jest --watch --runInBand"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
