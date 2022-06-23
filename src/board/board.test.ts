@@ -1,4 +1,4 @@
-import { Board } from './board'
+import { Board, defaultRows } from './board'
 
 describe('Board', () => {
   test('Should Create a board', () => {
@@ -9,6 +9,6 @@ describe('Board', () => {
     const emptyRow = new Array(8).fill(null)
     const sut = new Board()
 
-    expect(sut.board).toEqual([[], [], emptyRow, emptyRow, emptyRow, emptyRow, [], []])
+    expect(sut.board).toEqual(defaultRows.map(item => item || emptyRow))
   })
 })

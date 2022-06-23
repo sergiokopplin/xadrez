@@ -1,3 +1,5 @@
+export const defaultRows = ['rnbqkbnr', 'pppppppp', null, null, null, null, 'PPPPPPPP', 'RNBQKBNR']
+
 export class Board {
   public readonly board: string[]
 
@@ -8,9 +10,8 @@ export class Board {
   private populateBoard () {
     const board = new Array(8).fill([])
     const emptyRow = new Array(8).fill(null)
-    const emptyRows = [2, 3, 4, 5]
 
-    emptyRows.forEach(row => { board[row] = emptyRow })
+    defaultRows.forEach((item, index) => { board[index] = item || emptyRow })
 
     return board
   }
