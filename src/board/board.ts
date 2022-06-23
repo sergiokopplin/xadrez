@@ -1,5 +1,8 @@
 import { getPositionAxis, Position } from '../utils'
 
+export const whitePieces = 'rnbqkp'
+export const blackPieces = 'RNBQKP'
+
 export const defaultRows = ['rnbqkbnr', 'pppppppp', null, null, null, null, 'PPPPPPPP', 'RNBQKBNR']
 
 export interface Square {
@@ -13,6 +16,10 @@ export class Board {
 
   constructor () {
     this.board = this.populateBoard()
+  }
+
+  private fixArrayIndex (y: number, x: number): number[] {
+    return [y - 1, x - 1]
   }
 
   private populateBoard (): Square[] {
@@ -34,14 +41,24 @@ export class Board {
   }
 
   public inferPieceColor (position: Position): Color {
-    const [y, x] = getPositionAxis(position)
-    const piece = this.board[y][x].piece
+    const [Y, X] = getPositionAxis(position)
+    const [y, x] = this.fixArrayIndex(Y, X)
+    const piece = this.board[y][x]?.piece
 
     if (!piece) return null
+
+    if (whitePieces.includes(piece)) {
+      return 'white'
+    }
+
+    if (blackPieces.includes(piece)) {
+      return 'black'
+    }
   }
 
   public getSquare (position: Position): Square {
-    const [y, x] = getPositionAxis(position)
+    const [Y, X] = getPositionAxis(position)
+    const [y, x] = this.fixArrayIndex(Y, X)
 
     return this.board[y][x]
   }

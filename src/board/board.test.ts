@@ -23,9 +23,25 @@ describe('Board', () => {
     it('should return null when empty square', () => {
       const { sut } = makeSut()
 
-      const color = sut.getSquare('d4')
+      const color = sut.inferPieceColor('d4')
 
       expect(color).toBe(null)
+    })
+
+    it('should return black', () => {
+      const { sut } = makeSut()
+
+      const color = sut.inferPieceColor('h8')
+
+      expect(color).toBe('black')
+    })
+
+    it('should return black', () => {
+      const { sut } = makeSut()
+
+      const color = sut.inferPieceColor('b3')
+
+      expect(color).toBe('white')
     })
   })
 
@@ -43,7 +59,7 @@ describe('Board', () => {
 
       const square = sut.getSquare('a3')
 
-      expect(square.piece).toBe('p')
+      expect(square.piece).toBe('b')
     })
   })
 })
