@@ -1,13 +1,17 @@
 export const defaultRows = ['rnbqkbnr', 'pppppppp', null, null, null, null, 'PPPPPPPP', 'RNBQKBNR']
 
+export interface Square {
+  piece: string
+}
+
 export class Board {
-  public readonly board: string[]
+  public readonly board: Square[]
 
   constructor () {
     this.board = this.populateBoard()
   }
 
-  private populateBoard (): string[] {
+  private populateBoard (): Square[] {
     const board = new Array(8).fill([])
     const emptyRow = new Array(8).fill(null)
 

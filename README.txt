@@ -19,4 +19,3 @@ Board
 
 TODO: getPiece
 TODO: move
-TODO: refactor board contract to object or null
