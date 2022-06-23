@@ -1,14 +1,12 @@
-import { Board, defaultRows } from './board'
+import { Board } from './board'
 
 describe('Board', () => {
-  test('Should Create a board', () => {
+  it('ensure board creation', () => {
     expect(new Board()).toBeTruthy()
   })
 
-  test('Should Create a board and populate squares correctly', () => {
-    const emptyRow = new Array(8).fill(null)
+  it('ensure board create and populate squares correctly', () => {
     const sut = new Board()
-
-    expect(sut.board).toEqual(defaultRows.map(item => item || emptyRow))
+    expect(sut.board).toMatchSnapshot()
   })
 })

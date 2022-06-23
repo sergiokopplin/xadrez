@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board ensure board create and populate squares correctly 1`] = `
+Array [
+  Array [
+    Object {
+      "piece": "r",
+    },
+    Object {
+      "piece": "n",
+    },
+    Object {
+      "piece": "b",
+    },
+    Object {
+      "piece": "q",
+    },
+    Object {
+      "piece": "k",
+    },
+    Object {
+      "piece": "b",
+    },
+    Object {
+      "piece": "n",
+    },
+    Object {
+      "piece": "r",
+    },
+  ],
+  Array [
+    Object {
+      "piece": "p",
+    },
+    Object {
+      "piece": "p",
+    },
+    Object {
+      "piece": "p",
+    },
+    Object {
+      "piece": "p",
+    },
+    Object {
+      "piece": "p",
+    },
+    Object {
+      "piece": "p",
+    },
+    Object {
+      "piece": "p",
+    },
+    Object {
+      "piece": "p",
+    },
+  ],
+  Array [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+  ],
+  Array [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+  ],
+  Array [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+  ],
+  Array [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+  ],
+  Array [
+    Object {
+      "piece": "P",
+    },
+    Object {
+      "piece": "P",
+    },
+    Object {
+      "piece": "P",
+    },
+    Object {
+      "piece": "P",
+    },
+    Object {
+      "piece": "P",
+    },
+    Object {
+      "piece": "P",
+    },
+    Object {
+      "piece": "P",
+    },
+    Object {
+      "piece": "P",
+    },
+  ],
+  Array [
+    Object {
+      "piece": "R",
+    },
+    Object {
+      "piece": "N",
+    },
+    Object {
+      "piece": "B",
+    },
+    Object {
+      "piece": "Q",
+    },
+    Object {
+      "piece": "K",
+    },
+    Object {
+      "piece": "B",
+    },
+    Object {
+      "piece": "N",
+    },
+    Object {
+      "piece": "R",
+    },
+  ],
+]
+`;

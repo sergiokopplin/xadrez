@@ -7,11 +7,20 @@ export class Board {
     this.board = this.populateBoard()
   }
 
-  private populateBoard () {
+  private populateBoard (): string[] {
     const board = new Array(8).fill([])
     const emptyRow = new Array(8).fill(null)
 
-    defaultRows.forEach((item, index) => { board[index] = item || emptyRow })
+    defaultRows.forEach((item, rowIndex) => {
+      if (!item) {
+        board[rowIndex] = emptyRow
+        return
+      }
+
+      board[rowIndex] = item.split('').map(piece => ({
+        piece
+      }))
+    })
 
     return board
   }
