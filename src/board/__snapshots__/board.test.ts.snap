@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Board ensure board create and populate squares correctly 1`] = `
+exports[`Board constructor ensure board create and populate squares correctly 1`] = `
 Array [
   Array [
     Object {
