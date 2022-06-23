@@ -67,6 +67,10 @@ export class Board {
     if (ourColor === theirColor) {
       return false
     }
+
+    if (ourColor !== theirColor) {
+      return true
+    }
   }
 
   public getSquare (position: Position): Square {

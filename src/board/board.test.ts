@@ -61,6 +61,14 @@ describe('Board', () => {
 
       expect(square).toBe(false)
     })
+
+    it('should return false when comparison with same color', () => {
+      const { sut } = makeSut()
+
+      const square = sut.isOpponent('a1', 'h8')
+
+      expect(square).toBe(true)
+    })
   })
 
   describe('getSquare', () => {
