@@ -6,6 +6,8 @@ export interface Square {
   piece: string
 }
 
+export type Color = 'black' | 'white'
+
 export class Board {
   public readonly board: Square[]
 
@@ -29,6 +31,13 @@ export class Board {
     })
 
     return board
+  }
+
+  public inferPieceColor (position: Position): Color {
+    const [y, x] = getPositionAxis(position)
+    const piece = this.board[y][x].piece
+
+    if (!piece) return null
   }
 
   public getSquare (position: Position): Square {

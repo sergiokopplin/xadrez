@@ -19,6 +19,16 @@ describe('Board', () => {
     })
   })
 
+  describe('inferPieceColor', () => {
+    it('should return null when empty square', () => {
+      const { sut } = makeSut()
+
+      const color = sut.getSquare('d4')
+
+      expect(color).toBe(null)
+    })
+  })
+
   describe('getSquare', () => {
     it('should return an empty square correctly', () => {
       const { sut } = makeSut()
