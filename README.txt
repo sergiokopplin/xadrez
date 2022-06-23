@@ -12,3 +12,10 @@ TODO: o peão só pode enferntar o adversário na diagonal
 Novos métodos
 
 TODO: método para retornar possíveis movimentos de uma peça
+
+---
+
+Board
+
+TODO: getPiece
+TODO: move
