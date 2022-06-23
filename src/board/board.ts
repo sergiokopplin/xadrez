@@ -1,3 +1,5 @@
+import { getPositionAxis, Position } from '../utils'
+
 export const defaultRows = ['rnbqkbnr', 'pppppppp', null, null, null, null, 'PPPPPPPP', 'RNBQKBNR']
 
 export interface Square {
@@ -27,5 +29,11 @@ export class Board {
     })
 
     return board
+  }
+
+  public getSquare (position: Position): Square {
+    const [y, x] = getPositionAxis(position)
+
+    return this.board[y][x]
   }
 }
