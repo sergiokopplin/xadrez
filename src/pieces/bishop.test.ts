@@ -7,7 +7,7 @@ const makeSut = (): { sut: Bishop } => {
 }
 
 describe('Bishop', () => {
-  describe('canBishopMove()', () => {
+  describe('move()', () => {
     test('to return properly', () => {
       const { sut } = makeSut()
 
