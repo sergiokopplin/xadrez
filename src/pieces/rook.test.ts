@@ -1,12 +1,20 @@
-import { canRookMove } from './rook'
+import { Rook } from './rook'
+
+const makeSut = (): { sut: Rook } => {
+  return {
+    sut: new Rook()
+  }
+}
 
 describe('Rook', () => {
-  describe('canRookMove()', () => {
+  describe('move()', () => {
     test('to return properly', () => {
-      expect(canRookMove('c4', 'c8')).toBe(true)
-      expect(canRookMove('c4', 'a4')).toBe(true)
-      expect(canRookMove('c4', 'g8')).toBe(false)
-      expect(canRookMove('c4', 'a1')).toBe(false)
+      const { sut } = makeSut()
+
+      expect(sut.move('c4', 'c8')).toBe(true)
+      expect(sut.move('c4', 'a4')).toBe(true)
+      expect(sut.move('c4', 'g8')).toBe(false)
+      expect(sut.move('c4', 'a1')).toBe(false)
     })
   })
 })
