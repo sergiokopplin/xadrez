@@ -1,11 +1,14 @@
 import { Position } from '../utils'
+import { Piece } from './piece'
 import { isYAxisMove, isXAxisMove, isDiagonalMove, isMoreThanSingleSquare } from './validations'
 
-export function canKingMove (current: Position, next: Position): boolean {
-  if (isMoreThanSingleSquare(current, next)) return false
-  if (isYAxisMove(current, next)) return true
-  if (isXAxisMove(current, next)) return true
-  if (isDiagonalMove(current, next)) return true
+export class King implements Piece {
+  move (current: Position, next: Position): boolean {
+    if (isMoreThanSingleSquare(current, next)) return false
+    if (isYAxisMove(current, next)) return true
+    if (isXAxisMove(current, next)) return true
+    if (isDiagonalMove(current, next)) return true
 
-  return false
+    return false
+  }
 }
