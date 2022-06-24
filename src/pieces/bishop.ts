@@ -1,8 +1,10 @@
-import { Position } from '../utils'
+import { Piece } from './piece'
 import { isDiagonalMove } from './validations'
 
-export function canBishopMove (current: Position, next: Position): boolean {
-  if (isDiagonalMove(current, next)) return true
+export class Bishop implements Piece {
+  move (current: string, next: string): boolean {
+    if (isDiagonalMove(current, next)) return true
 
-  return false
+    return false
+  }
 }
