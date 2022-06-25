@@ -19,3 +19,6 @@ Board
 
 TODO: getPiece
 TODO: move
+
+precisa refatorar as classes, para ter injeção de dependencia.
+com isso, nos testes, dá pra mockar os imports
