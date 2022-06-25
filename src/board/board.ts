@@ -76,11 +76,8 @@ export class Board {
 
     if (!piece) {
       this.board[y][x] = null
-      return
-    }
-
-    this.board[y][x] = {
-      piece
+    } else {
+      this.board[y][x] = { piece }
     }
   }
 }
