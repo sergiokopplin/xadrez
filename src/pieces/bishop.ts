@@ -1,35 +1,15 @@
-import { Square } from '../board/board'
-import { getPositionAxis } from '../utils'
+import { Board, Square } from '../board/board'
 import { Piece } from './piece'
-import { isDiagonalMove, isMoreThanSingleSquare } from './validations'
+import { hasBlockPieceOnDiagonal, isDiagonalMove } from './validations'
+
+export const makeBoard = (): Board => {
+  return new Board()
+}
 
 export class Bishop implements Piece {
-  hasBlockPiece (current: string, next: string, board: Square[]): boolean {
-    const [cy, cx] = getPositionAxis(current)
-    const [ny, nx] = getPositionAxis(next)
-
-    if (!isMoreThanSingleSquare(current, next)) {
-      return false
-    }
-
-    if (cy < ny) {
-      for (let index = cy + 1; index < ny; index++) {
-        if (board[index][index]) {
-          return false
-        }
-      }
-    } else if (cy > ny) {
-      for (let index = cy - 1; index > ny; index--) {
-        if (board[index][index]) {
-          return false
-        }
-      }
-    }
-  }
-
   move (current: string, next: string, board: Square[]): boolean {
     if (!isDiagonalMove(current, next)) return false
-    if (this.hasBlockPiece(current, next, board)) return false
+    if (hasBlockPieceOnDiagonal(current, next, board)) return false
 
     return true
   }

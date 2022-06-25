@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { getPositionAxis, Position } from '../utils'
+import { Square } from '../board/board'
+import { fixArrayIndex, getPositionAxis, Position } from '../utils'
 
 export function isYAxisMove (current: Position, next: Position): boolean {
   const [cy, cx] = getPositionAxis(current)
@@ -61,6 +62,22 @@ export function isMoreThanSingleSquare (current: Position, next: Position): bool
   if (isDiagonalMove(current, next)) {
     if (Math.abs(cy - ny) > 1 || Math.abs(cx - nx) > 1) {
       return true
+    }
+  }
+
+  return false
+}
+
+export function hasBlockPieceOnDiagonal (current: string, next: string, board: Square[]): boolean {
+  const [cy, cx] = getPositionAxis(current)
+  const [ny, nx] = getPositionAxis(next)
+  const [CY, NY] = fixArrayIndex(cy, ny)
+
+  if (CY < NY) {
+    for (let index = CY + 1; index < NY; index++) {
+      if (board[index][index]) {
+        return true
+      }
     }
   }
 

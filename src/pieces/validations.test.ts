@@ -1,4 +1,7 @@
-import { isDiagonalMove, isMoreThanSingleSquare, isXAxisMove, isYAxisMove } from './validations'
+import { Board } from '../board/board'
+import { hasBlockPieceOnDiagonal, isDiagonalMove, isMoreThanSingleSquare, isXAxisMove, isYAxisMove } from './validations'
+
+export const makeBoard = (): Board => new Board()
 
 describe('Validations', () => {
   describe('isYAxisMove', () => {
@@ -42,6 +45,27 @@ describe('Validations', () => {
       expect(isMoreThanSingleSquare('d4', 'f4')).toBe(true)
       expect(isMoreThanSingleSquare('d4', 'e5')).toBe(false)
       expect(isMoreThanSingleSquare('d4', 'f6')).toBe(true)
+    })
+  })
+
+  describe('hasBlockPieceOnDiagonal()', () => {
+    test('Should Validate true when block piece', () => {
+      const boardSut = makeBoard()
+
+      boardSut.setPiece('P', 'c3')
+      boardSut.setPiece('P', 'd4')
+      boardSut.setPiece('b', 'f6')
+
+      expect(hasBlockPieceOnDiagonal('c3', 'f6', boardSut.board)).toBe(true)
+    })
+
+    test('Should Validate false when no block piece', () => {
+      const boardSut = makeBoard()
+
+      boardSut.setPiece('P', 'c3')
+      boardSut.setPiece('b', 'f6')
+
+      expect(hasBlockPieceOnDiagonal('c3', 'f6', boardSut.board)).toBe(false)
     })
   })
 })
