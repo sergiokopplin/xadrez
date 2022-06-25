@@ -69,4 +69,13 @@ export class Board {
 
     return this.board[y][x]
   }
+
+  public setPiece (piece: string, position: Position): void {
+    const [Y, X] = getPositionAxis(position)
+    const [y, x] = fixArrayIndex(Y, X)
+
+    this.board[y][x] = {
+      piece
+    }
+  }
 }

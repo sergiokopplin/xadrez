@@ -88,4 +88,16 @@ describe('Board', () => {
       expect(square.piece).toBe('b')
     })
   })
+
+  describe('setPiece', () => {
+    it('should set piece correctly', () => {
+      const { sut } = makeSut()
+
+      sut.setPiece('P', 'a1')
+
+      expect(sut.board[0][0]).toEqual({
+        piece: 'P'
+      })
+    })
+  })
 })
