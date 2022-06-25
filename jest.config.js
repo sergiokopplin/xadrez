@@ -15,4 +15,7 @@ module.exports = {
   preset: "ts-jest",
 
   coveragePathIgnorePatterns: ["/node_modules/"],
+
+  // Sonar Cloud Setup
+  testResultsProcessor: "jest-sonar-reporter",
 };
