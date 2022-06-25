@@ -59,6 +59,16 @@ describe('Validations', () => {
       expect(hasBlockPieceOnDiagonal('c3', 'f6', boardSut.board)).toBe(true)
     })
 
+    test('Should Validate true when block piece and diagonal movement is negative', () => {
+      const boardSut = makeBoard()
+
+      boardSut.setPiece('P', 'f6')
+      boardSut.setPiece('P', 'd4')
+      boardSut.setPiece('b', 'c3')
+
+      expect(hasBlockPieceOnDiagonal('f6', 'c3', boardSut.board)).toBe(true)
+    })
+
     test('Should Validate false when no block piece', () => {
       const boardSut = makeBoard()
 
@@ -66,6 +76,15 @@ describe('Validations', () => {
       boardSut.setPiece('b', 'f6')
 
       expect(hasBlockPieceOnDiagonal('c3', 'f6', boardSut.board)).toBe(false)
+    })
+
+    test('Should Validate false when no block piece and diagonal movement is negative', () => {
+      const boardSut = makeBoard()
+
+      boardSut.setPiece('P', 'f6')
+      boardSut.setPiece('b', 'c3')
+
+      expect(hasBlockPieceOnDiagonal('f6', 'c3', boardSut.board)).toBe(false)
     })
   })
 })
