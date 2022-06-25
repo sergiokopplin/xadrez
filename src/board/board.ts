@@ -1,3 +1,5 @@
+import produce from 'immer'
+
 import { fixArrayIndex, getPositionAxis, Position } from '../utils'
 
 export const whitePieces = 'rnbqkp'
@@ -12,7 +14,7 @@ export interface Square {
 export type Color = 'black' | 'white'
 
 export class Board {
-  public readonly board: Square[]
+  public board: Square[]
 
   constructor () {
     this.board = this.populateBoard()
@@ -75,9 +77,9 @@ export class Board {
     const [y, x] = fixArrayIndex(Y, X)
 
     if (!piece) {
-      this.board[y][x] = null
+      this.board = produce(this.board, draft => { draft[y][x] = null })
     } else {
-      this.board[y][x] = { piece }
+      this.board = produce(this.board, draft => { draft[y][x] = { piece } })
     }
   }
 }
