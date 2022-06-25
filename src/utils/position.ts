@@ -5,3 +5,7 @@ export function getPositionAxis (position: string): number[] {
 
   return [letterFromTo[y], Number.parseInt(x)]
 }
+
+export function fixArrayIndex (y: number, x: number): number[] {
+  return [y - 1, x - 1]
+}
