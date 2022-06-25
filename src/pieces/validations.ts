@@ -7,14 +7,14 @@ export function isYAxisMove (current: Position, next: Position): boolean {
   const [cy, cx] = getPositionAxis(current)
   const [ny, nx] = getPositionAxis(next)
 
-  return !(cy !== ny)
+  return cy === ny
 }
 
 export function isXAxisMove (current: Position, next: Position): boolean {
   const [cy, cx] = getPositionAxis(current)
   const [ny, nx] = getPositionAxis(next)
 
-  return !(cx !== nx)
+  return cx === nx
 }
 
 export function isDiagonalMove (current: Position, next: Position): boolean {
