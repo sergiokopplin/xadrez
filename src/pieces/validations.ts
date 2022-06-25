@@ -81,5 +81,13 @@ export function hasBlockPieceOnDiagonal (current: string, next: string, board: S
     }
   }
 
+  if (CY > NY) {
+    for (let index = CY - 1; index > NY; index--) {
+      if (board[index][index]) {
+        return false
+      }
+    }
+  }
+
   return false
 }
