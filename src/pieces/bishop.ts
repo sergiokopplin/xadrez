@@ -27,9 +27,10 @@ export class Bishop implements Piece {
     }
   }
 
-  move (current: string, next: string): boolean {
-    if (isDiagonalMove(current, next)) return true
+  move (current: string, next: string, board: Square[]): boolean {
+    if (!isDiagonalMove(current, next)) return false
+    if (this.hasBlockPiece(current, next, board)) return false
 
-    return false
+    return true
   }
 }
