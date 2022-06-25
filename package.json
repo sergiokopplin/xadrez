@@ -8,7 +8,7 @@
     "build": "babel src --out-dir dist --no-copy-ignored",
     "dev": "nodemon --watch 'src/' --exec 'ts-node src/app.ts' -e ts",
     "test": "jest --watch",
-    "test:staged": "jest --bail --findRelatedTests --collect-coverage",
+    "test:staged": "jest --bail --findRelatedTests",
     "prepare": "husky install",
     "commit": "git-cz"
   },
@@ -45,7 +45,7 @@
     }
   },
   "lint-staged": {
-    "*.ts": "eslint --fix",
+    "*.ts": "./node_modules/.bin/eslint --fix",
     "*.{js,ts,json}": "npm run test:staged"
   },
   "dependencies": {
