@@ -1,7 +1,7 @@
 import { Square } from '../board/board'
 import { Position } from '../utils'
 import { Piece } from './piece'
-import { hasBlockPieceOnDiagonal, isDiagonalMove, isXAxisMove, isYAxisMove } from './validations'
+import { hasBlockPieceOnDiagonal, hasBlockPieceOnXAxis, hasBlockPieceOnYAxis, isDiagonalMove, isXAxisMove, isYAxisMove } from './validations'
 
 export class Queen implements Piece {
   move (current: Position, next: Position, board: Square[]): boolean {
@@ -9,6 +9,8 @@ export class Queen implements Piece {
     if (isXAxisMove(current, next)) return true
     if (isDiagonalMove(current, next)) return true
     if (hasBlockPieceOnDiagonal(current, next, board)) return false
+    if (hasBlockPieceOnYAxis(current, next, board)) return false
+    if (hasBlockPieceOnXAxis(current, next, board)) return false
 
     return false
   }
