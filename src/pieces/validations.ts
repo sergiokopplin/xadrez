@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import { Square } from '../board/board'
 import { fixArrayIndex, getPositionAxis, Position } from '../utils'
 
