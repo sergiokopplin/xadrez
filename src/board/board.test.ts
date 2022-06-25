@@ -95,9 +95,15 @@ describe('Board', () => {
 
       sut.setPiece('P', 'a1')
 
-      expect(sut.board[0][0]).toEqual({
-        piece: 'P'
-      })
+      expect(sut.board[0][0]).toEqual({ piece: 'P' })
+    })
+
+    it('should set piece correctly when null', () => {
+      const { sut } = makeSut()
+
+      sut.setPiece(null, 'a1')
+
+      expect(sut.board[0][0]).toEqual(null)
     })
   })
 })

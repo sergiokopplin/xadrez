@@ -74,6 +74,13 @@ export class Board {
     const [Y, X] = getPositionAxis(position)
     const [y, x] = fixArrayIndex(Y, X)
 
+    console.log(piece)
+
+    if (!piece) {
+      this.board[y][x] = null
+      return
+    }
+
     this.board[y][x] = {
       piece
     }
