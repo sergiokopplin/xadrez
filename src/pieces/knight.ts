@@ -11,12 +11,7 @@ export class Knight implements Piece {
     const [cy, cx] = getPositionAxis(current)
     const [ny, nx] = getPositionAxis(next)
 
-    if (Math.abs(cy - ny) === 1 || Math.abs(cy - ny) === 2) {
-      if (Math.abs(cx - nx) === 1 || Math.abs(cx - nx) === 2) {
-        return true
-      }
-    }
-
-    return false
+    return !!((Math.abs(cy - ny) === 1 || Math.abs(cy - ny) === 2) &&
+      (Math.abs(cx - nx) === 1 || Math.abs(cx - nx) === 2))
   }
 }

@@ -8,8 +8,7 @@ export class Rook implements Piece {
     if (isYAxisMove(current, next)) return true
     if (isXAxisMove(current, next)) return true
     if (hasBlockPieceOnYAxis(current, next, board)) return false
-    if (hasBlockPieceOnXAxis(current, next, board)) return false
 
-    return false
+    return !(hasBlockPieceOnXAxis(current, next, board))
   }
 }

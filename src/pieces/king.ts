@@ -7,8 +7,7 @@ export class King implements Piece {
     if (isMoreThanSingleSquare(current, next)) return false
     if (isYAxisMove(current, next)) return true
     if (isXAxisMove(current, next)) return true
-    if (isDiagonalMove(current, next)) return true
 
-    return false
+    return !!(isDiagonalMove(current, next))
   }
 }

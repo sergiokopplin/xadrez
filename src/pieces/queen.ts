@@ -10,8 +10,7 @@ export class Queen implements Piece {
     if (isDiagonalMove(current, next)) return true
     if (hasBlockPieceOnDiagonal(current, next, board)) return false
     if (hasBlockPieceOnYAxis(current, next, board)) return false
-    if (hasBlockPieceOnXAxis(current, next, board)) return false
 
-    return false
+    return !(hasBlockPieceOnXAxis(current, next, board))
   }
 }

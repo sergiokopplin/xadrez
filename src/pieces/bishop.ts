@@ -9,8 +9,7 @@ export const makeBoard = (): Board => {
 export class Bishop implements Piece {
   move (current: string, next: string, board: Square[]): boolean {
     if (!isDiagonalMove(current, next)) return false
-    if (hasBlockPieceOnDiagonal(current, next, board)) return false
 
-    return true
+    return !(hasBlockPieceOnDiagonal(current, next, board))
   }
 }
