@@ -116,3 +116,28 @@ export function hasBlockPieceOnYAxis (current: string, next: string, board: Squa
 
   return false
 }
+
+export function hasBlockPieceOnXAxis (current: string, next: string, board: Square[]): boolean {
+  const [cy, cx] = getPositionAxis(current)
+  const [ny, nx] = getPositionAxis(next)
+  const [CY, CX] = fixArrayIndex(cy, cx)
+  const [NY, NX] = fixArrayIndex(ny, nx)
+
+  if (CY < NY) {
+    for (let index = CY + 1; index < NY; index++) {
+      if (board[cx][index]) {
+        return true
+      }
+    }
+  }
+
+  if (CY > NY) {
+    for (let index = CY - 1; index > NY; index--) {
+      if (board[cx][index]) {
+        return true
+      }
+    }
+  }
+
+  return false
+}

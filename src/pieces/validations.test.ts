@@ -1,5 +1,5 @@
 import { Board } from '../board/board'
-import { hasBlockPieceOnDiagonal, hasBlockPieceOnYAxis, isDiagonalMove, isMoreThanSingleSquare, isXAxisMove, isYAxisMove } from './validations'
+import { hasBlockPieceOnDiagonal, hasBlockPieceOnXAxis, hasBlockPieceOnYAxis, isDiagonalMove, isMoreThanSingleSquare, isXAxisMove, isYAxisMove } from './validations'
 
 export const makeBoard = (): Board => new Board()
 
@@ -59,7 +59,7 @@ describe('Validations', () => {
       expect(hasBlockPieceOnDiagonal('c3', 'f6', boardSut.board)).toBe(true)
     })
 
-    test('Should Validate true when block piece and diagonal movement is negative', () => {
+    test('Should Validate true when block piece and movement is negative', () => {
       const boardSut = makeBoard()
 
       boardSut.setPiece('P', 'f6')
@@ -78,7 +78,7 @@ describe('Validations', () => {
       expect(hasBlockPieceOnDiagonal('c3', 'f6', boardSut.board)).toBe(false)
     })
 
-    test('Should Validate false when no block piece and diagonal movement is negative', () => {
+    test('Should Validate false when no block piece and movement is negative', () => {
       const boardSut = makeBoard()
 
       boardSut.setPiece('P', 'f6')
@@ -99,7 +99,7 @@ describe('Validations', () => {
       expect(hasBlockPieceOnYAxis('d3', 'd6', boardSut.board)).toBe(true)
     })
 
-    test('Should Validate true when block piece and diagonal movement is negative', () => {
+    test('Should Validate true when block piece and movement is negative', () => {
       const boardSut = makeBoard()
 
       boardSut.setPiece('P', 'd6')
@@ -118,13 +118,53 @@ describe('Validations', () => {
       expect(hasBlockPieceOnYAxis('d3', 'd6', boardSut.board)).toBe(false)
     })
 
-    test('Should Validate false when no block piece and diagonal movement is negative', () => {
+    test('Should Validate false when no block piece and movement is negative', () => {
       const boardSut = makeBoard()
 
       boardSut.setPiece('P', 'd6')
       boardSut.setPiece('b', 'd3')
 
       expect(hasBlockPieceOnYAxis('d6', 'd3', boardSut.board)).toBe(false)
+    })
+  })
+
+  describe('hasBlockPieceOnXAxis()', () => {
+    test('Should Validate true when block piece', () => {
+      const boardSut = makeBoard()
+
+      boardSut.setPiece('P', 'c4')
+      boardSut.setPiece('P', 'e4')
+      boardSut.setPiece('b', 'f4')
+
+      expect(hasBlockPieceOnXAxis('c4', 'f4', boardSut.board)).toBe(true)
+    })
+
+    test('Should Validate true when block piece and movement is negative', () => {
+      const boardSut = makeBoard()
+
+      boardSut.setPiece('b', 'f4')
+      boardSut.setPiece('P', 'e4')
+      boardSut.setPiece('P', 'c4')
+
+      expect(hasBlockPieceOnXAxis('f4', 'c4', boardSut.board)).toBe(true)
+    })
+
+    test('Should Validate false when no block piece', () => {
+      const boardSut = makeBoard()
+
+      boardSut.setPiece('P', 'c4')
+      boardSut.setPiece('b', 'f4')
+
+      expect(hasBlockPieceOnXAxis('c4', 'f4', boardSut.board)).toBe(false)
+    })
+
+    test('Should Validate false when no block piece and movement is negative', () => {
+      const boardSut = makeBoard()
+
+      boardSut.setPiece('b', 'f4')
+      boardSut.setPiece('P', 'c4')
+
+      expect(hasBlockPieceOnXAxis('f4', 'c4', boardSut.board)).toBe(false)
     })
   })
 })
