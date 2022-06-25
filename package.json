@@ -47,5 +47,8 @@
   },
   "lint-staged": {
     "*.ts": "eslint --fix"
+  },
+  "dependencies": {
+    "immer": "^9.0.15"
   }
 }
