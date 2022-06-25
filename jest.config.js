@@ -12,5 +12,10 @@ module.exports = {
   testEnvironment: "node",
 
   // A preset that is used as a base for Jest's configuration
-  preset: 'ts-jest',
+  preset: "ts-jest",
+
+  // Sonar Cloud configs
+  testResultsProcessor: "jest-sonar-reporter",
+
+  coveragePathIgnorePatterns: ["/node_modules/"],
 };
