@@ -1,3 +1,4 @@
+import { Board } from '../board/board'
 import { Bishop } from './bishop'
 
 const makeSut = (): { sut: Bishop } => {
@@ -6,7 +7,23 @@ const makeSut = (): { sut: Bishop } => {
   }
 }
 
+export const makeBoard = (): Board => {
+  return new Board()
+}
+
 describe('Bishop', () => {
+  describe('hasBlockPiece()', () => {
+    it('should return false when single level move', () => {
+      const { sut } = makeSut()
+      const board = makeBoard()
+
+      board.setPiece('b', 'd4')
+      board.setPiece('P', 'e5')
+
+      expect(sut.hasBlockPiece('d4', 'e5', board)).toBe(false)
+    })
+  })
+
   describe('move()', () => {
     test('to return properly', () => {
       const { sut } = makeSut()
