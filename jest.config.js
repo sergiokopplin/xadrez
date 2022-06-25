@@ -18,4 +18,14 @@ module.exports = {
 
   // Sonar Cloud Setup
   testResultsProcessor: "jest-sonar-reporter",
+
+  collectCoverageFrom: ["src/**/*.ts", "!src/**/*.test.ts"],
+  coverageThreshold: {
+    global: {
+      branches: 93,
+      functions: 93,
+      lines: 93,
+      statements: 93,
+    },
+  },
 };
