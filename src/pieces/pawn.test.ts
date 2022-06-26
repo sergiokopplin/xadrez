@@ -15,6 +15,7 @@ describe('Pawn', () => {
       expect(sut.move('d4', 'e5')).toBe(true)
       expect(sut.move('d4', 'c5')).toBe(true)
       expect(sut.move('d4', 'f6')).toBe(false)
+      expect(sut.move('d4', 'e4')).toBe(false)
     })
   })
 })
