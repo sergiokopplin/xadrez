@@ -3,33 +3,33 @@ import { hasDiagonalBlockPiece, hasHorizontalBlockPiece, hasVerticalBlockPiece, 
 
 export const makeBoard = (): Board => new Board()
 
+const verticalMoves = [
+  ['d4', 'd2'],
+  ['d4', 'd3'],
+  ['d4', 'd5'],
+  ['d4', 'd6']
+]
+
+const horizontalMoves = [
+  ['d4', 'b4'],
+  ['d4', 'c4'],
+  ['d4', 'e4'],
+  ['d4', 'f4']
+]
+
+const diagonalMoves = [
+  ['d4', 'e5'],
+  ['d4', 'f6'],
+  ['d4', 'e3'],
+  ['d4', 'f2'],
+  ['d4', 'c3'],
+  ['d4', 'b2'],
+  ['d4', 'c5'],
+  ['d4', 'b6']
+]
+
 describe('Validations', () => {
   describe('Moves', () => {
-    const verticalMoves = [
-      ['d4', 'd2'],
-      ['d4', 'd3'],
-      ['d4', 'd5'],
-      ['d4', 'd6']
-    ]
-
-    const horizontalMoves = [
-      ['d4', 'b4'],
-      ['d4', 'c4'],
-      ['d4', 'e4'],
-      ['d4', 'f4']
-    ]
-
-    const diagonalMoves = [
-      ['d4', 'e5'],
-      ['d4', 'f6'],
-      ['d4', 'e3'],
-      ['d4', 'f2'],
-      ['d4', 'c3'],
-      ['d4', 'b2'],
-      ['d4', 'c5'],
-      ['d4', 'b6']
-    ]
-
     test('isVerticalMove', () => {
       verticalMoves.forEach(move => expect(isVerticalMove(move[0], move[1])).toBe(true))
       horizontalMoves.forEach(move => expect(isVerticalMove(move[0], move[1])).toBe(false))
@@ -51,12 +51,24 @@ describe('Validations', () => {
 
   describe('Move Length', () => {
     test('isMoreThanSingleSquare()', () => {
-      expect(isMoreThanSingleSquare('d4', 'd5')).toBe(false)
-      expect(isMoreThanSingleSquare('d4', 'd6')).toBe(true)
-      expect(isMoreThanSingleSquare('d4', 'e4')).toBe(false)
-      expect(isMoreThanSingleSquare('d4', 'f4')).toBe(true)
-      expect(isMoreThanSingleSquare('d4', 'e5')).toBe(false)
-      expect(isMoreThanSingleSquare('d4', 'f6')).toBe(true)
+      expect(isMoreThanSingleSquare(verticalMoves[0][0], verticalMoves[0][1])).toBe(true)
+      expect(isMoreThanSingleSquare(verticalMoves[1][0], verticalMoves[1][1])).toBe(false)
+      expect(isMoreThanSingleSquare(verticalMoves[2][0], verticalMoves[2][1])).toBe(false)
+      expect(isMoreThanSingleSquare(verticalMoves[3][0], verticalMoves[3][1])).toBe(true)
+
+      expect(isMoreThanSingleSquare(horizontalMoves[0][0], horizontalMoves[0][1])).toBe(true)
+      expect(isMoreThanSingleSquare(horizontalMoves[1][0], horizontalMoves[1][1])).toBe(false)
+      expect(isMoreThanSingleSquare(horizontalMoves[2][0], horizontalMoves[2][1])).toBe(false)
+      expect(isMoreThanSingleSquare(horizontalMoves[3][0], horizontalMoves[3][1])).toBe(true)
+
+      expect(isMoreThanSingleSquare(diagonalMoves[0][0], diagonalMoves[0][1])).toBe(false)
+      expect(isMoreThanSingleSquare(diagonalMoves[1][0], diagonalMoves[1][1])).toBe(true)
+      expect(isMoreThanSingleSquare(diagonalMoves[2][0], diagonalMoves[2][1])).toBe(false)
+      expect(isMoreThanSingleSquare(diagonalMoves[3][0], diagonalMoves[3][1])).toBe(true)
+      expect(isMoreThanSingleSquare(diagonalMoves[4][0], diagonalMoves[4][1])).toBe(false)
+      expect(isMoreThanSingleSquare(diagonalMoves[5][0], diagonalMoves[5][1])).toBe(true)
+      expect(isMoreThanSingleSquare(diagonalMoves[6][0], diagonalMoves[6][1])).toBe(false)
+      expect(isMoreThanSingleSquare(diagonalMoves[7][0], diagonalMoves[7][1])).toBe(true)
     })
   })
 
