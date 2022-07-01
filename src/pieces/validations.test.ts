@@ -4,34 +4,73 @@ import { hasBlockPieceOnDiagonal, hasBlockPieceOnXAxis, hasBlockPieceOnYAxis, is
 export const makeBoard = (): Board => new Board()
 
 describe('Validations', () => {
-  describe('isYAxisMove', () => {
+  test('isYAxisMove', () => {
+    // vertical
+    expect(isYAxisMove('d4', 'd2')).toBe(true)
+    expect(isYAxisMove('d4', 'd3')).toBe(true)
     expect(isYAxisMove('d4', 'd5')).toBe(true)
     expect(isYAxisMove('d4', 'd6')).toBe(true)
+    // horizontal
+    expect(isYAxisMove('d4', 'b4')).toBe(false)
+    expect(isYAxisMove('d4', 'c4')).toBe(false)
     expect(isYAxisMove('d4', 'e4')).toBe(false)
     expect(isYAxisMove('d4', 'f4')).toBe(false)
+    // diagonal
     expect(isYAxisMove('d4', 'e5')).toBe(false)
     expect(isYAxisMove('d4', 'f6')).toBe(false)
+    expect(isYAxisMove('d4', 'e3')).toBe(false)
+    expect(isYAxisMove('d4', 'f2')).toBe(false)
+    expect(isYAxisMove('d4', 'c3')).toBe(false)
+    expect(isYAxisMove('d4', 'b2')).toBe(false)
+    expect(isYAxisMove('d4', 'c5')).toBe(false)
+    expect(isYAxisMove('d4', 'b6')).toBe(false)
   })
 
-  describe('isXAxisMove', () => {
+  test('isXAxisMove', () => {
+    // vertical
+    expect(isXAxisMove('d4', 'd2')).toBe(false)
+    expect(isXAxisMove('d4', 'd3')).toBe(false)
     expect(isXAxisMove('d4', 'd5')).toBe(false)
     expect(isXAxisMove('d4', 'd6')).toBe(false)
+    // horizontal
+    expect(isXAxisMove('d4', 'b4')).toBe(true)
+    expect(isXAxisMove('d4', 'c4')).toBe(true)
     expect(isXAxisMove('d4', 'e4')).toBe(true)
     expect(isXAxisMove('d4', 'f4')).toBe(true)
+    // diagonal
     expect(isXAxisMove('d4', 'e5')).toBe(false)
     expect(isXAxisMove('d4', 'f6')).toBe(false)
+    expect(isXAxisMove('d4', 'e3')).toBe(false)
+    expect(isXAxisMove('d4', 'f2')).toBe(false)
+    expect(isXAxisMove('d4', 'c3')).toBe(false)
+    expect(isXAxisMove('d4', 'b2')).toBe(false)
+    expect(isXAxisMove('d4', 'c5')).toBe(false)
+    expect(isXAxisMove('d4', 'b6')).toBe(false)
   })
 
-  describe('isDiagonalMove()', () => {
+  test('isDiagonalMove()', () => {
+    // vertical
+    expect(isDiagonalMove('d4', 'd2')).toBe(false)
+    expect(isDiagonalMove('d4', 'd3')).toBe(false)
     expect(isDiagonalMove('d4', 'd5')).toBe(false)
     expect(isDiagonalMove('d4', 'd6')).toBe(false)
+    // horizontal
+    expect(isDiagonalMove('d4', 'b4')).toBe(false)
+    expect(isDiagonalMove('d4', 'c4')).toBe(false)
     expect(isDiagonalMove('d4', 'e4')).toBe(false)
     expect(isDiagonalMove('d4', 'f4')).toBe(false)
+    // diagonal
     expect(isDiagonalMove('d4', 'e5')).toBe(true)
     expect(isDiagonalMove('d4', 'f6')).toBe(true)
+    expect(isDiagonalMove('d4', 'e3')).toBe(true)
+    expect(isDiagonalMove('d4', 'f2')).toBe(true)
+    expect(isDiagonalMove('d4', 'c3')).toBe(true)
+    expect(isDiagonalMove('d4', 'b2')).toBe(true)
+    expect(isDiagonalMove('d4', 'c5')).toBe(true)
+    expect(isDiagonalMove('d4', 'b6')).toBe(true)
   })
 
-  describe('isMoreThanSingleSquare()', () => {
+  test.skip('isMoreThanSingleSquare()', () => {
     expect(isMoreThanSingleSquare('d4', 'd5')).toBe(false)
     expect(isMoreThanSingleSquare('d4', 'd6')).toBe(true)
     expect(isMoreThanSingleSquare('d4', 'e4')).toBe(false)
@@ -40,7 +79,7 @@ describe('Validations', () => {
     expect(isMoreThanSingleSquare('d4', 'f6')).toBe(true)
   })
 
-  describe('hasBlockPieceOnDiagonal()', () => {
+  test.skip('hasBlockPieceOnDiagonal()', () => {
     test('when block piece', () => {
       const boardSut = makeBoard()
 
@@ -80,7 +119,7 @@ describe('Validations', () => {
     })
   })
 
-  describe('hasBlockPieceOnYAxis()', () => {
+  test.skip('hasBlockPieceOnYAxis()', () => {
     test('Should Validate true when block piece', () => {
       const boardSut = makeBoard()
 
@@ -120,7 +159,7 @@ describe('Validations', () => {
     })
   })
 
-  describe('hasBlockPieceOnXAxis()', () => {
+  test.skip('hasBlockPieceOnXAxis()', () => {
     test('Should Validate true when block piece', () => {
       const boardSut = makeBoard()
 
