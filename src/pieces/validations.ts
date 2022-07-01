@@ -76,7 +76,7 @@ export function hasVerticalBlockPiece (current: string, next: string, board: Squ
 
   if (CX < NX) {
     for (let index = CX + 1; index < NX; index++) {
-      if (board[CY][index]) {
+      if (board[index][CY]) {
         return true
       }
     }
@@ -84,7 +84,7 @@ export function hasVerticalBlockPiece (current: string, next: string, board: Squ
 
   if (CX > NX) {
     for (let index = CX - 1; index > NX; index--) {
-      if (board[CY][index]) {
+      if (board[index][CY]) {
         return true
       }
     }
@@ -101,7 +101,7 @@ export function hasHorizontalBlockPiece (current: string, next: string, board: S
 
   if (CY < NY) {
     for (let index = CY + 1; index < NY; index++) {
-      if (board[index][CX]) {
+      if (board[CX][index]) {
         return true
       }
     }
@@ -109,7 +109,7 @@ export function hasHorizontalBlockPiece (current: string, next: string, board: S
 
   if (CY > NY) {
     for (let index = CY - 1; index > NY; index--) {
-      if (board[index][CX]) {
+      if (board[CX][index]) {
         return true
       }
     }

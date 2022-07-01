@@ -39,7 +39,7 @@ describe('Board', () => {
     it('should return white', () => {
       const { sut } = makeSut()
 
-      const color = sut.inferPieceColor('b3')
+      const color = sut.inferPieceColor('c2')
 
       expect(color).toBe('white')
     })
@@ -83,27 +83,27 @@ describe('Board', () => {
     it('should return an square correctly', () => {
       const { sut } = makeSut()
 
-      const square = sut.getSquare('a3')
+      const square = sut.getSquare('c1')
 
       expect(square.piece).toBe('b')
     })
   })
 
   describe('setPiece', () => {
-    it('should set piece correctly', () => {
-      const { sut } = makeSut()
-
-      sut.setPiece('P', 'a1')
-
-      expect(sut.board[0][0]).toEqual({ piece: 'P' })
-    })
-
     it('should set piece correctly when null', () => {
       const { sut } = makeSut()
 
       sut.setPiece(null, 'a1')
 
       expect(sut.board[0][0]).toEqual(null)
+    })
+
+    it('should set piece correctly', () => {
+      const { sut } = makeSut()
+
+      sut.setPiece('P', 'd3')
+
+      expect(sut.board[2][3]).toEqual({ piece: 'P' })
     })
   })
 })

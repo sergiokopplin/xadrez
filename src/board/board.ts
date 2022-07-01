@@ -41,7 +41,7 @@ export class Board {
   public inferPieceColor (position: Position): Color {
     const [Y, X] = getPositionAxis(position)
     const [y, x] = fixArrayIndex(Y, X)
-    const piece = this.board[y][x]?.piece
+    const piece = this.board[x][y]?.piece
 
     if (!piece) return null
 
@@ -63,7 +63,7 @@ export class Board {
     const [Y, X] = getPositionAxis(position)
     const [y, x] = fixArrayIndex(Y, X)
 
-    return this.board[y][x]
+    return this.board[x][y]
   }
 
   public setPiece (piece: string, position: Position): void {
@@ -71,9 +71,9 @@ export class Board {
     const [y, x] = fixArrayIndex(Y, X)
 
     if (!piece) {
-      this.board = produce(this.board, draft => { draft[y][x] = null })
+      this.board = produce(this.board, draft => { draft[x][y] = null })
     } else {
-      this.board = produce(this.board, draft => { draft[y][x] = { piece } })
+      this.board = produce(this.board, draft => { draft[x][y] = { piece } })
     }
   }
 }
