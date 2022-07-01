@@ -5,10 +5,13 @@ import { hasHorizontalBlockPiece, hasVerticalBlockPiece, isHorizontalMove, isVer
 
 export class Rook implements Piece {
   move (current: Position, next: Position, board: Square[]): boolean {
-    if (isVerticalMove(current, next)) return true
-    if (isHorizontalMove(current, next)) return true
-    if (hasVerticalBlockPiece(current, next, board)) return false
+    if (
+      hasVerticalBlockPiece(current, next, board) ||
+      hasHorizontalBlockPiece(current, next, board)
+    ) return false
 
-    return !(hasHorizontalBlockPiece(current, next, board))
+    if (isVerticalMove(current, next)) return true
+
+    return isHorizontalMove(current, next)
   }
 }

@@ -14,9 +14,11 @@ describe('Rook', () => {
     test('to return properly', () => {
       const { sut } = makeSut()
 
-      expect(sut.move('c4', 'c8', makeBoard().board)).toBe(true)
-      expect(sut.move('c4', 'a4', makeBoard().board)).toBe(true)
-      expect(sut.move('c4', 'g8', makeBoard().board)).toBe(false)
+      expect(sut.move('c4', 'c6', makeBoard().board)).toBe(true)
+      expect(sut.move('c6', 'c4', makeBoard().board)).toBe(true)
+      expect(sut.move('c4', 'f4', makeBoard().board)).toBe(true)
+      expect(sut.move('f4', 'c4', makeBoard().board)).toBe(true)
+      expect(sut.move('c4', 'e6', makeBoard().board)).toBe(false)
       expect(sut.move('c4', 'a1', makeBoard().board)).toBe(false)
     })
   })

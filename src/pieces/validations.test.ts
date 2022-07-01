@@ -193,7 +193,7 @@ describe('Validations', () => {
       })
     })
 
-    describe.only('hasHorizontalBlockPiece()', () => {
+    describe('hasHorizontalBlockPiece()', () => {
       test('Should Validate true when block on next piece', () => {
         const boardSut = makeBoard()
 
