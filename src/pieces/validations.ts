@@ -96,12 +96,12 @@ export function hasVerticalBlockPiece (current: string, next: string, board: Squ
 export function hasHorizontalBlockPiece (current: string, next: string, board: Square[]): boolean {
   const [cy, cx] = getPositionAxis(current)
   const [ny, nx] = getPositionAxis(next)
-  const [CY] = fixArrayIndex(cy, cx)
   const [NY] = fixArrayIndex(ny, nx)
+  const [CY, CX] = fixArrayIndex(cy, cx)
 
   if (CY < NY) {
     for (let index = CY + 1; index < NY; index++) {
-      if (board[cx][index]) {
+      if (board[index][CX]) {
         return true
       }
     }
@@ -109,7 +109,7 @@ export function hasHorizontalBlockPiece (current: string, next: string, board: S
 
   if (CY > NY) {
     for (let index = CY - 1; index > NY; index--) {
-      if (board[cx][index]) {
+      if (board[index][CX]) {
         return true
       }
     }

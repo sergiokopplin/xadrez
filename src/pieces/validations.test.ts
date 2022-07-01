@@ -133,7 +133,7 @@ describe('Validations', () => {
       })
     })
 
-    describe.only('hasVerticalBlockPiece()', () => {
+    describe('hasVerticalBlockPiece()', () => {
       test('Should Validate true when block on next piece', () => {
         const boardSut = makeBoard()
 
@@ -193,8 +193,18 @@ describe('Validations', () => {
       })
     })
 
-    describe('hasHorizontalBlockPiece()', () => {
-      test('Should Validate true when block piece', () => {
+    describe.only('hasHorizontalBlockPiece()', () => {
+      test('Should Validate true when block on next piece', () => {
+        const boardSut = makeBoard()
+
+        boardSut.setPiece('P', 'c4')
+        boardSut.setPiece('P', 'd4')
+        boardSut.setPiece('b', 'f4')
+
+        expect(hasHorizontalBlockPiece('c4', 'f4', boardSut.board)).toBe(true)
+      })
+
+      test('Should Validate true when block after next piece', () => {
         const boardSut = makeBoard()
 
         boardSut.setPiece('P', 'c4')
@@ -204,11 +214,21 @@ describe('Validations', () => {
         expect(hasHorizontalBlockPiece('c4', 'f4', boardSut.board)).toBe(true)
       })
 
-      test('Should Validate true when block piece and movement is negative', () => {
+      test('Should Validate true when block on next piece and movement is negative', () => {
         const boardSut = makeBoard()
 
         boardSut.setPiece('b', 'f4')
         boardSut.setPiece('P', 'e4')
+        boardSut.setPiece('P', 'c4')
+
+        expect(hasHorizontalBlockPiece('f4', 'c4', boardSut.board)).toBe(true)
+      })
+
+      test('Should Validate true when block after next piece and movement is negative', () => {
+        const boardSut = makeBoard()
+
+        boardSut.setPiece('b', 'f4')
+        boardSut.setPiece('P', 'd4')
         boardSut.setPiece('P', 'c4')
 
         expect(hasHorizontalBlockPiece('f4', 'c4', boardSut.board)).toBe(true)
