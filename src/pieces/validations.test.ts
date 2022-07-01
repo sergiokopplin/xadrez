@@ -74,7 +74,7 @@ describe('Validations', () => {
 
   describe('Blocks', () => {
     describe('hasDiagonalBlockPiece()', () => {
-      test('when block piece', () => {
+      test('when block piece on next piece', () => {
         const boardSut = makeBoard()
 
         boardSut.setPiece('P', 'c3')
@@ -84,7 +84,27 @@ describe('Validations', () => {
         expect(hasDiagonalBlockPiece('c3', 'f6', boardSut.board)).toBe(true)
       })
 
-      test('when block piece and movement is negative', () => {
+      test('when block piece after next piece', () => {
+        const boardSut = makeBoard()
+
+        boardSut.setPiece('P', 'c3')
+        boardSut.setPiece('P', 'e5')
+        boardSut.setPiece('b', 'f6')
+
+        expect(hasDiagonalBlockPiece('c3', 'f6', boardSut.board)).toBe(true)
+      })
+
+      test('when block piece on next piece and movement is negative', () => {
+        const boardSut = makeBoard()
+
+        boardSut.setPiece('P', 'f6')
+        boardSut.setPiece('P', 'e5')
+        boardSut.setPiece('b', 'c3')
+
+        expect(hasDiagonalBlockPiece('f6', 'c3', boardSut.board)).toBe(true)
+      })
+
+      test('when block piece after next piece and movement is negative', () => {
         const boardSut = makeBoard()
 
         boardSut.setPiece('P', 'f6')
