@@ -36,7 +36,7 @@ describe('Board', () => {
       expect(color).toBe('black')
     })
 
-    it('should return black', () => {
+    it('should return white', () => {
       const { sut } = makeSut()
 
       const color = sut.inferPieceColor('b3')
