@@ -45,13 +45,7 @@ export class Board {
 
     if (!piece) return null
 
-    if (whitePieces.includes(piece)) {
-      return 'white'
-    }
-
-    if (blackPieces.includes(piece)) {
-      return 'black'
-    }
+    return whitePieces.includes(piece) ? 'white' : 'black'
   }
 
   public isOpponent (ourPosition: Position, theirPosition: Position): boolean {
