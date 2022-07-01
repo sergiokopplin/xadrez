@@ -5,70 +5,47 @@ export const makeBoard = (): Board => new Board()
 
 describe('Validations', () => {
   describe('Moves', () => {
+    const verticalMoves = [
+      ['d4', 'd2'],
+      ['d4', 'd3'],
+      ['d4', 'd5'],
+      ['d4', 'd6']
+    ]
+
+    const horizontalMoves = [
+      ['d4', 'b4'],
+      ['d4', 'c4'],
+      ['d4', 'e4'],
+      ['d4', 'f4']
+    ]
+
+    const diagonalMoves = [
+      ['d4', 'e5'],
+      ['d4', 'f6'],
+      ['d4', 'e3'],
+      ['d4', 'f2'],
+      ['d4', 'c3'],
+      ['d4', 'b2'],
+      ['d4', 'c5'],
+      ['d4', 'b6']
+    ]
+
     test('isVerticalMove', () => {
-      // vertical
-      expect(isVerticalMove('d4', 'd2')).toBe(true)
-      expect(isVerticalMove('d4', 'd3')).toBe(true)
-      expect(isVerticalMove('d4', 'd5')).toBe(true)
-      expect(isVerticalMove('d4', 'd6')).toBe(true)
-      // horizontal
-      expect(isVerticalMove('d4', 'b4')).toBe(false)
-      expect(isVerticalMove('d4', 'c4')).toBe(false)
-      expect(isVerticalMove('d4', 'e4')).toBe(false)
-      expect(isVerticalMove('d4', 'f4')).toBe(false)
-      // diagonal
-      expect(isVerticalMove('d4', 'e5')).toBe(false)
-      expect(isVerticalMove('d4', 'f6')).toBe(false)
-      expect(isVerticalMove('d4', 'e3')).toBe(false)
-      expect(isVerticalMove('d4', 'f2')).toBe(false)
-      expect(isVerticalMove('d4', 'c3')).toBe(false)
-      expect(isVerticalMove('d4', 'b2')).toBe(false)
-      expect(isVerticalMove('d4', 'c5')).toBe(false)
-      expect(isVerticalMove('d4', 'b6')).toBe(false)
+      verticalMoves.forEach(move => expect(isVerticalMove(move[0], move[1])).toBe(true))
+      horizontalMoves.forEach(move => expect(isVerticalMove(move[0], move[1])).toBe(false))
+      diagonalMoves.forEach(move => expect(isVerticalMove(move[0], move[1])).toBe(false))
     })
 
     test('isHorizontalMove', () => {
-      // vertical
-      expect(isHorizontalMove('d4', 'd2')).toBe(false)
-      expect(isHorizontalMove('d4', 'd3')).toBe(false)
-      expect(isHorizontalMove('d4', 'd5')).toBe(false)
-      expect(isHorizontalMove('d4', 'd6')).toBe(false)
-      // horizontal
-      expect(isHorizontalMove('d4', 'b4')).toBe(true)
-      expect(isHorizontalMove('d4', 'c4')).toBe(true)
-      expect(isHorizontalMove('d4', 'e4')).toBe(true)
-      expect(isHorizontalMove('d4', 'f4')).toBe(true)
-      // diagonal
-      expect(isHorizontalMove('d4', 'e5')).toBe(false)
-      expect(isHorizontalMove('d4', 'f6')).toBe(false)
-      expect(isHorizontalMove('d4', 'e3')).toBe(false)
-      expect(isHorizontalMove('d4', 'f2')).toBe(false)
-      expect(isHorizontalMove('d4', 'c3')).toBe(false)
-      expect(isHorizontalMove('d4', 'b2')).toBe(false)
-      expect(isHorizontalMove('d4', 'c5')).toBe(false)
-      expect(isHorizontalMove('d4', 'b6')).toBe(false)
+      verticalMoves.forEach(move => expect(isHorizontalMove(move[0], move[1])).toBe(false))
+      horizontalMoves.forEach(move => expect(isHorizontalMove(move[0], move[1])).toBe(true))
+      diagonalMoves.forEach(move => expect(isHorizontalMove(move[0], move[1])).toBe(false))
     })
 
     test('isDiagonalMove()', () => {
-      // vertical
-      expect(isDiagonalMove('d4', 'd2')).toBe(false)
-      expect(isDiagonalMove('d4', 'd3')).toBe(false)
-      expect(isDiagonalMove('d4', 'd5')).toBe(false)
-      expect(isDiagonalMove('d4', 'd6')).toBe(false)
-      // horizontal
-      expect(isDiagonalMove('d4', 'b4')).toBe(false)
-      expect(isDiagonalMove('d4', 'c4')).toBe(false)
-      expect(isDiagonalMove('d4', 'e4')).toBe(false)
-      expect(isDiagonalMove('d4', 'f4')).toBe(false)
-      // diagonal
-      expect(isDiagonalMove('d4', 'e5')).toBe(true)
-      expect(isDiagonalMove('d4', 'f6')).toBe(true)
-      expect(isDiagonalMove('d4', 'e3')).toBe(true)
-      expect(isDiagonalMove('d4', 'f2')).toBe(true)
-      expect(isDiagonalMove('d4', 'c3')).toBe(true)
-      expect(isDiagonalMove('d4', 'b2')).toBe(true)
-      expect(isDiagonalMove('d4', 'c5')).toBe(true)
-      expect(isDiagonalMove('d4', 'b6')).toBe(true)
+      verticalMoves.forEach(move => expect(isDiagonalMove(move[0], move[1])).toBe(false))
+      horizontalMoves.forEach(move => expect(isDiagonalMove(move[0], move[1])).toBe(false))
+      diagonalMoves.forEach(move => expect(isDiagonalMove(move[0], move[1])).toBe(true))
     })
   })
 
