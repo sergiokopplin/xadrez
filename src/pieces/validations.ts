@@ -1,14 +1,14 @@
 import { Square } from '../board/board'
 import { fixArrayIndex, getPositionAxis, Position } from '../utils'
 
-export function isYAxisMove (current: Position, next: Position): boolean {
+export function isVerticalMove (current: Position, next: Position): boolean {
   const [cy] = getPositionAxis(current)
   const [ny] = getPositionAxis(next)
 
   return cy === ny
 }
 
-export function isXAxisMove (current: Position, next: Position): boolean {
+export function isHorizontalMove (current: Position, next: Position): boolean {
   const [, cx] = getPositionAxis(current)
   const [, nx] = getPositionAxis(next)
 
@@ -19,7 +19,7 @@ export function isDiagonalMove (current: Position, next: Position): boolean {
   const [cy, cx] = getPositionAxis(current)
   const [ny, nx] = getPositionAxis(next)
 
-  if (isYAxisMove(current, next) || isXAxisMove(current, next)) {
+  if (isVerticalMove(current, next) || isHorizontalMove(current, next)) {
     return false
   }
 
@@ -33,18 +33,18 @@ export function isMoreThanSingleSquare (current: Position, next: Position): bool
   const [cy, cx] = getPositionAxis(current)
   const [ny, nx] = getPositionAxis(next)
 
-  if (isYAxisMove(current, next) && (Math.abs(cx - nx) > 1)) {
+  if (isVerticalMove(current, next) && (Math.abs(cx - nx) > 1)) {
     return true
   }
 
-  if (isXAxisMove(current, next) && (Math.abs(cy - ny) > 1)) {
+  if (isHorizontalMove(current, next) && (Math.abs(cy - ny) > 1)) {
     return true
   }
 
   return !!(isDiagonalMove(current, next) && (Math.abs(cy - ny) > 1 || Math.abs(cx - nx) > 1))
 }
 
-export function hasBlockPieceOnDiagonal (current: string, next: string, board: Square[]): boolean {
+export function hasDiagonalBlockPiece (current: string, next: string, board: Square[]): boolean {
   const [cy] = getPositionAxis(current)
   const [ny] = getPositionAxis(next)
   const [CY, NY] = fixArrayIndex(cy, ny)
@@ -68,7 +68,7 @@ export function hasBlockPieceOnDiagonal (current: string, next: string, board: S
   return false
 }
 
-export function hasBlockPieceOnYAxis (current: string, next: string, board: Square[]): boolean {
+export function hasVerticalBlockPiece (current: string, next: string, board: Square[]): boolean {
   const [cy, cx] = getPositionAxis(current)
   const [ny, nx] = getPositionAxis(next)
   const [, CX] = fixArrayIndex(cy, cx)
@@ -93,7 +93,7 @@ export function hasBlockPieceOnYAxis (current: string, next: string, board: Squa
   return false
 }
 
-export function hasBlockPieceOnXAxis (current: string, next: string, board: Square[]): boolean {
+export function hasHorizontalBlockPiece (current: string, next: string, board: Square[]): boolean {
   const [cy, cx] = getPositionAxis(current)
   const [ny, nx] = getPositionAxis(next)
   const [CY] = fixArrayIndex(cy, cx)

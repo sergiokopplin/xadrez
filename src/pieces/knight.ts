@@ -1,12 +1,12 @@
 import { Position, getPositionAxis } from '../utils'
 import { Piece } from './piece'
-import { isYAxisMove, isXAxisMove, isDiagonalMove } from './validations'
+import { isVerticalMove, isHorizontalMove, isDiagonalMove } from './validations'
 
 export class Knight implements Piece {
   move (current: Position, next: Position): boolean {
     if (isDiagonalMove(current, next)) return false
-    if (isYAxisMove(current, next)) return false
-    if (isXAxisMove(current, next)) return false
+    if (isVerticalMove(current, next)) return false
+    if (isHorizontalMove(current, next)) return false
 
     const [cy, cx] = getPositionAxis(current)
     const [ny, nx] = getPositionAxis(next)

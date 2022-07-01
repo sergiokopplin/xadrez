@@ -1,16 +1,16 @@
 import { Square } from '../board/board'
 import { Position } from '../utils'
 import { Piece } from './piece'
-import { hasBlockPieceOnDiagonal, hasBlockPieceOnXAxis, hasBlockPieceOnYAxis, isDiagonalMove, isXAxisMove, isYAxisMove } from './validations'
+import { hasDiagonalBlockPiece, hasHorizontalBlockPiece, hasVerticalBlockPiece, isDiagonalMove, isHorizontalMove, isVerticalMove } from './validations'
 
 export class Queen implements Piece {
   move (current: Position, next: Position, board: Square[]): boolean {
-    if (isYAxisMove(current, next)) return true
-    if (isXAxisMove(current, next)) return true
+    if (isVerticalMove(current, next)) return true
+    if (isHorizontalMove(current, next)) return true
     if (isDiagonalMove(current, next)) return true
-    if (hasBlockPieceOnDiagonal(current, next, board)) return false
-    if (hasBlockPieceOnYAxis(current, next, board)) return false
+    if (hasDiagonalBlockPiece(current, next, board)) return false
+    if (hasVerticalBlockPiece(current, next, board)) return false
 
-    return !(hasBlockPieceOnXAxis(current, next, board))
+    return !(hasHorizontalBlockPiece(current, next, board))
   }
 }
