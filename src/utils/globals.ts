@@ -8,3 +8,9 @@ export const letterFromTo = {
   g: 7,
   h: 8
 }
+
+export const whitePieces = 'rnbqkp'
+
+export const blackPieces = 'RNBQKP'
+
+export const defaultRows = ['rnbqkbnr', 'pppppppp', null, null, null, null, 'PPPPPPPP', 'RNBQKBNR']

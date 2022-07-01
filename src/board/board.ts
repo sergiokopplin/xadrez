@@ -1,11 +1,6 @@
 import produce from 'immer'
 
-import { getPositionAxis, Position } from '../utils'
-
-export const whitePieces = 'rnbqkp'
-export const blackPieces = 'RNBQKP'
-
-export const defaultRows = ['rnbqkbnr', 'pppppppp', null, null, null, null, 'PPPPPPPP', 'RNBQKBNR']
+import { defaultRows, getPositionAxis, Position, whitePieces } from '../utils'
 
 export interface Square {
   piece: string

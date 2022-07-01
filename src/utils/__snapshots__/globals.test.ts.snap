@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`letterFromTo should return properly 1`] = `
+exports[`globals should return properly 1`] = `
 Object {
   "a": 1,
   "b": 2,
@@ -12,3 +12,20 @@ Object {
   "h": 8,
 }
 `;
+
+exports[`globals should return properly 2`] = `"RNBQKP"`;
+
+exports[`globals should return properly 3`] = `
+Array [
+  "rnbqkbnr",
+  "pppppppp",
+  null,
+  null,
+  null,
+  null,
+  "PPPPPPPP",
+  "RNBQKBNR",
+]
+`;
+
+exports[`globals should return properly 4`] = `"rnbqkp"`;
