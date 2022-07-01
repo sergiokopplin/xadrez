@@ -1,6 +1,6 @@
 import produce from 'immer'
 
-import { fixArrayIndex, getPositionAxis, Position } from '../utils'
+import { getPositionAxis, Position } from '../utils'
 
 export const whitePieces = 'rnbqkp'
 export const blackPieces = 'RNBQKP'
@@ -39,8 +39,7 @@ export class Board {
   }
 
   public inferPieceColor (position: Position): Color {
-    const [Y, X] = getPositionAxis(position)
-    const [y, x] = fixArrayIndex(Y, X)
+    const [y, x] = getPositionAxis(position)
     const piece = this.board[x][y]?.piece
 
     if (!piece) return null
@@ -60,15 +59,13 @@ export class Board {
   }
 
   public getSquare (position: Position): Square {
-    const [Y, X] = getPositionAxis(position)
-    const [y, x] = fixArrayIndex(Y, X)
+    const [y, x] = getPositionAxis(position)
 
     return this.board[x][y]
   }
 
   public setPiece (piece: string, position: Position): void {
-    const [Y, X] = getPositionAxis(position)
-    const [y, x] = fixArrayIndex(Y, X)
+    const [y, x] = getPositionAxis(position)
 
     if (!piece) {
       this.board = produce(this.board, draft => { draft[x][y] = null })

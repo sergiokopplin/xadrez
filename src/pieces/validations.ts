@@ -1,5 +1,5 @@
 import { Square } from '../board/board'
-import { fixArrayIndex, getPositionAxis, Position } from '../utils'
+import { getPositionAxis, Position } from '../utils'
 
 export function isVerticalMove (current: Position, next: Position): boolean {
   const [cy] = getPositionAxis(current)
@@ -45,9 +45,8 @@ export function isMoreThanSingleSquare (current: Position, next: Position): bool
 }
 
 export function hasDiagonalBlockPiece (current: string, next: string, board: Square[]): boolean {
-  const [cy] = getPositionAxis(current)
-  const [ny] = getPositionAxis(next)
-  const [CY, NY] = fixArrayIndex(cy, ny)
+  const [CY] = getPositionAxis(current)
+  const [NY] = getPositionAxis(next)
 
   if (CY < NY) {
     for (let index = CY + 1; index < NY; index++) {
@@ -69,10 +68,8 @@ export function hasDiagonalBlockPiece (current: string, next: string, board: Squ
 }
 
 export function hasVerticalBlockPiece (current: string, next: string, board: Square[]): boolean {
-  const [cy, cx] = getPositionAxis(current)
-  const [ny, nx] = getPositionAxis(next)
-  const [CY, CX] = fixArrayIndex(cy, cx)
-  const [, NX] = fixArrayIndex(ny, nx)
+  const [CY, CX] = getPositionAxis(current)
+  const [, NX] = getPositionAxis(next)
 
   if (CX < NX) {
     for (let index = CX + 1; index < NX; index++) {
@@ -94,10 +91,8 @@ export function hasVerticalBlockPiece (current: string, next: string, board: Squ
 }
 
 export function hasHorizontalBlockPiece (current: string, next: string, board: Square[]): boolean {
-  const [cy, cx] = getPositionAxis(current)
-  const [ny, nx] = getPositionAxis(next)
-  const [NY] = fixArrayIndex(ny, nx)
-  const [CY, CX] = fixArrayIndex(cy, cx)
+  const [CY, CX] = getPositionAxis(current)
+  const [NY] = getPositionAxis(next)
 
   if (CY < NY) {
     for (let index = CY + 1; index < NY; index++) {
