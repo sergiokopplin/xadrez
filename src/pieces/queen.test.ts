@@ -14,9 +14,12 @@ describe('Queen', () => {
     test('to return properly with valid moves', () => {
       const { sut } = makeSut()
 
-      expect(sut.move('c4', 'c8', makeBoard().board)).toBe(true)
-      expect(sut.move('c4', 'a4', makeBoard().board)).toBe(true)
-      expect(sut.move('c4', 'g8', makeBoard().board)).toBe(true)
+      expect(sut.move('c3', 'c6', makeBoard().board)).toBe(true)
+      expect(sut.move('c6', 'c3', makeBoard().board)).toBe(true)
+      expect(sut.move('c4', 'f4', makeBoard().board)).toBe(true)
+      expect(sut.move('f4', 'c4', makeBoard().board)).toBe(true)
+      expect(sut.move('c3', 'f6', makeBoard().board)).toBe(true)
+      expect(sut.move('f6', 'c3', makeBoard().board)).toBe(true)
     })
 
     test('to return properly with invalid moves', () => {

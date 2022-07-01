@@ -5,12 +5,15 @@ import { hasDiagonalBlockPiece, hasHorizontalBlockPiece, hasVerticalBlockPiece, 
 
 export class Queen implements Piece {
   move (current: Position, next: Position, board: Square[]): boolean {
+    if (
+      hasDiagonalBlockPiece(current, next, board) ||
+      hasVerticalBlockPiece(current, next, board) ||
+      hasHorizontalBlockPiece(current, next, board)
+    ) return false
+
     if (isVerticalMove(current, next)) return true
     if (isHorizontalMove(current, next)) return true
-    if (isDiagonalMove(current, next)) return true
-    if (hasDiagonalBlockPiece(current, next, board)) return false
-    if (hasVerticalBlockPiece(current, next, board)) return false
 
-    return !(hasHorizontalBlockPiece(current, next, board))
+    return isDiagonalMove(current, next)
   }
 }
