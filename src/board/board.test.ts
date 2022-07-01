@@ -106,4 +106,33 @@ describe('Board', () => {
       expect(sut.board[2][3]).toEqual({ piece: 'P' })
     })
   })
+
+  describe('move', () => {
+    it('should not move when same color piece', () => {
+      const { sut } = makeSut()
+
+      sut.move('a1', 'd2')
+
+      expect(sut.board[0][0]).toEqual({ piece: 'r' })
+      expect(sut.board[1][3]).toEqual({ piece: 'p' })
+    })
+
+    it('should move when empty position', () => {
+      const { sut } = makeSut()
+
+      sut.move('a1', 'a5')
+
+      expect(sut.board[0][0]).toEqual(null)
+      expect(sut.board[4][0]).toEqual({ piece: 'r' })
+    })
+
+    it('should move when opponent', () => {
+      const { sut } = makeSut()
+
+      sut.move('a2', 'a7')
+
+      expect(sut.board[1][0]).toEqual(null)
+      expect(sut.board[6][0]).toEqual({ piece: 'p' })
+    })
+  })
 })

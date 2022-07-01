@@ -73,4 +73,17 @@ export class Board {
       this.board = produce(this.board, draft => { draft[x][y] = { piece } })
     }
   }
+
+  public isEmptySquare (position: Position): boolean {
+    return !this.getSquare(position)
+  }
+
+  public move (current: Position, next: Position): void {
+    const currentSquare = this.getSquare(current)
+
+    if (this.isEmptySquare(next) || this.isOpponent(current, next)) {
+      this.setPiece(null, current)
+      this.setPiece(currentSquare.piece, next)
+    }
+  }
 }
