@@ -1,5 +1,4 @@
-import { Square } from '../board/board'
-import { getPositionAxis, Position } from '../utils'
+import { getPositionAxis, Position, Square } from '../utils'
 
 export function isVerticalMove (current: Position, next: Position): boolean {
   const [cy] = getPositionAxis(current)
@@ -44,7 +43,7 @@ export function isMoreThanSingleSquare (current: Position, next: Position): bool
   return !!(isDiagonalMove(current, next) && (Math.abs(cy - ny) > 1 || Math.abs(cx - nx) > 1))
 }
 
-export function hasDiagonalBlockPiece (current: string, next: string, board: Square[]): boolean {
+export function hasDiagonalBlockPiece (current: string, next: string, board: Square[][]): boolean {
   const [CY] = getPositionAxis(current)
   const [NY] = getPositionAxis(next)
 
@@ -67,7 +66,7 @@ export function hasDiagonalBlockPiece (current: string, next: string, board: Squ
   return false
 }
 
-export function hasVerticalBlockPiece (current: string, next: string, board: Square[]): boolean {
+export function hasVerticalBlockPiece (current: string, next: string, board: Square[][]): boolean {
   const [CY, CX] = getPositionAxis(current)
   const [, NX] = getPositionAxis(next)
 
@@ -90,7 +89,7 @@ export function hasVerticalBlockPiece (current: string, next: string, board: Squ
   return false
 }
 
-export function hasHorizontalBlockPiece (current: string, next: string, board: Square[]): boolean {
+export function hasHorizontalBlockPiece (current: string, next: string, board: Square[][]): boolean {
   const [CY, CX] = getPositionAxis(current)
   const [NY] = getPositionAxis(next)
 
