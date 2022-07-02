@@ -6,7 +6,7 @@ import { Piece } from './piece'
 import { Queen } from './queen'
 import { Rook } from './rook'
 
-const PiecesFromTo = {
+const PiecesFromTo: { [key: string]: Piece } = {
   r: new Rook(),
   n: new Knight(),
   b: new Bishop(),

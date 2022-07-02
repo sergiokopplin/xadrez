@@ -161,6 +161,155 @@ ppppPPPP
 "
 `;
 
+exports[`Board move should not move when invalid 1`] = `
+Array [
+  Array [
+    Object {
+      "piece": "r",
+    },
+    Object {
+      "piece": "n",
+    },
+    Object {
+      "piece": "b",
+    },
+    Object {
+      "piece": "q",
+    },
+    Object {
+      "piece": "k",
+    },
+    Object {
+      "piece": "b",
+    },
+    Object {
+      "piece": "n",
+    },
+    Object {
+      "piece": "r",
+    },
+  ],
+  Array [
+    Object {
+      "piece": "p",
+    },
+    Object {
+      "piece": "p",
+    },
+    Object {
+      "piece": "p",
+    },
+    Object {
+      "piece": "p",
+    },
+    Object {
+      "piece": "p",
+    },
+    Object {
+      "piece": "p",
+    },
+    Object {
+      "piece": "p",
+    },
+    Object {
+      "piece": "p",
+    },
+  ],
+  Array [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+  ],
+  Array [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+  ],
+  Array [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+  ],
+  Array [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+  ],
+  Array [
+    Object {
+      "piece": "P",
+    },
+    Object {
+      "piece": "P",
+    },
+    Object {
+      "piece": "P",
+    },
+    Object {
+      "piece": "P",
+    },
+    Object {
+      "piece": "P",
+    },
+    Object {
+      "piece": "P",
+    },
+    Object {
+      "piece": "P",
+    },
+    Object {
+      "piece": "P",
+    },
+  ],
+  Array [
+    Object {
+      "piece": "R",
+    },
+    Object {
+      "piece": "N",
+    },
+    Object {
+      "piece": "B",
+    },
+    Object {
+      "piece": "Q",
+    },
+    Object {
+      "piece": "K",
+    },
+    Object {
+      "piece": "B",
+    },
+    Object {
+      "piece": "N",
+    },
+    Object {
+      "piece": "R",
+    },
+  ],
+]
+`;
+
 exports[`Board printBoard ensure board print 1`] = `
 "RNBQKBNR
 PPPPPPPP

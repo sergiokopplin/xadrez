@@ -1,9 +1,9 @@
-import { Position, Square } from '../utils'
+import { IBoard, Position } from '../utils'
 import { Piece } from './piece'
 import { hasDiagonalBlockPiece, hasHorizontalBlockPiece, hasVerticalBlockPiece, isDiagonalMove, isHorizontalMove, isVerticalMove } from './validations'
 
 export class Queen implements Piece {
-  move (current: Position, next: Position, board: Square[][]): boolean {
+  move (current: Position, next: Position, board: IBoard): boolean {
     if (
       hasDiagonalBlockPiece(current, next, board) ||
       hasVerticalBlockPiece(current, next, board) ||

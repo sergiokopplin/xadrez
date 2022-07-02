@@ -101,7 +101,7 @@ describe('Board', () => {
 
       const square = sut.getSquare('c1')
 
-      expect(square.piece).toBe('b')
+      expect(square).toEqual({ piece: 'b' })
     })
   })
 
@@ -157,6 +157,14 @@ describe('Board', () => {
       expect(sut.board[4][0]).toEqual(null)
       expect(sut.board[5][0]).toEqual(null)
       expect(sut.board[6][0]).toEqual({ piece: 'p' })
+    })
+
+    it('should not move when invalid', () => {
+      const { sut } = makeSut()
+
+      sut.move('a4', 'a5')
+
+      expect(sut.board).toMatchSnapshot()
     })
   })
 })

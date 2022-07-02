@@ -13,4 +13,4 @@ export const whitePieces = 'rnbqkp'
 
 export const blackPieces = 'RNBQKP'
 
-export const defaultRows: string[] = ['rnbqkbnr', 'pppppppp', null, null, null, null, 'PPPPPPPP', 'RNBQKBNR']
+export const defaultRows: (string | null)[] = ['rnbqkbnr', 'pppppppp', null, null, null, null, 'PPPPPPPP', 'RNBQKBNR']

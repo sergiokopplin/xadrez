@@ -1,16 +1,16 @@
 import produce from 'immer'
 import { makePiece } from '../pieces/factories'
 
-import { Color, defaultRows, getPositionAxis, Position, Square, whitePieces } from '../utils'
+import { Color, defaultRows, getPositionAxis, Position, Square, IBoard, whitePieces } from '../utils'
 
 export class Board {
-  public board: Square[][]
+  public board: IBoard
 
   constructor (customRows?: string[]) {
     this.board = this.populateBoard(customRows)
   }
 
-  private populateBoard (customRows?: string[]): Square[][] {
+  private populateBoard (customRows?: string[]): IBoard {
     const board = new Array(8).fill([])
     const emptyRow = new Array(8).fill(null)
     const rows = customRows || defaultRows
@@ -31,7 +31,7 @@ export class Board {
 
   public printBoard (): string {
     let boardPrint = ''
-    const reverseBoard = [].concat(this.board).reverse()
+    const reverseBoard: IBoard = produce<IBoard>(this.board, draft => draft.reverse())
 
     reverseBoard.forEach(row => {
       boardPrint += row.map(item => item?.piece ? item.piece : '.').join('')
@@ -41,7 +41,7 @@ export class Board {
     return boardPrint
   }
 
-  public inferPieceColor (position: Position): Color {
+  public inferPieceColor (position: Position): Color | null {
     const [y, x] = getPositionAxis(position)
     const piece = this.board[x][y]?.piece
 
@@ -67,7 +67,7 @@ export class Board {
     return this.board[x][y]
   }
 
-  public setPiece (piece: string, position: Position): void {
+  public setPiece (piece: string | null, position: Position): void {
     const [y, x] = getPositionAxis(position)
 
     if (!piece) {
@@ -83,6 +83,9 @@ export class Board {
 
   public move (current: Position, next: Position): void {
     const currentSquare = this.getSquare(current)
+
+    if (!currentSquare) return
+
     const currentPiece = makePiece(currentSquare.piece)
 
     if ((this.isEmptySquare(next) || this.isOpponent(current, next)) && currentPiece.move(current, next, this.board)) {

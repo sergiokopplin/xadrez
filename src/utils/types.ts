@@ -1,7 +1,7 @@
 export type Position = string
 
-export interface Square {
-  piece: string
-}
+export type Square = { piece: string } | null
+
+export type IBoard = Square[][]
 
 export type Color = 'black' | 'white'
