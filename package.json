@@ -11,7 +11,8 @@
     "test:watch": "jest --watch",
     "test:staged": "jest --bail --findRelatedTests",
     "prepare": "husky install",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "cm": "npm run commit"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
