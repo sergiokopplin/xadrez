@@ -1,4 +1,5 @@
 import produce from 'immer'
+import { makePiece } from '../pieces/factories'
 
 import { Color, defaultRows, getPositionAxis, Position, Square, whitePieces } from '../utils'
 
@@ -69,8 +70,9 @@ export class Board {
 
   public move (current: Position, next: Position): void {
     const currentSquare = this.getSquare(current)
+    const currentPiece = makePiece(currentSquare.piece)
 
-    if (this.isEmptySquare(next) || this.isOpponent(current, next)) {
+    if ((this.isEmptySquare(next) || this.isOpponent(current, next)) && currentPiece.move(current, next, this.board)) {
       this.setPiece(null, current)
       this.setPiece(currentSquare.piece, next)
     }

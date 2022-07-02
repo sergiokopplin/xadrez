@@ -120,18 +120,26 @@ describe('Board', () => {
     it('should move when empty position', () => {
       const { sut } = makeSut()
 
-      sut.move('a1', 'a5')
+      sut.move('a2', 'a3')
 
-      expect(sut.board[0][0]).toEqual(null)
-      expect(sut.board[4][0]).toEqual({ piece: 'r' })
+      expect(sut.board[1][0]).toEqual(null)
+      expect(sut.board[2][0]).toEqual({ piece: 'p' })
     })
 
     it('should move when opponent', () => {
       const { sut } = makeSut()
 
-      sut.move('a2', 'a7')
+      sut.move('a2', 'a3')
+      sut.move('a3', 'a4')
+      sut.move('a4', 'a5')
+      sut.move('a5', 'a6')
+      sut.move('a6', 'a7')
 
       expect(sut.board[1][0]).toEqual(null)
+      expect(sut.board[2][0]).toEqual(null)
+      expect(sut.board[3][0]).toEqual(null)
+      expect(sut.board[4][0]).toEqual(null)
+      expect(sut.board[5][0]).toEqual(null)
       expect(sut.board[6][0]).toEqual({ piece: 'p' })
     })
   })
