@@ -1,6 +1,5 @@
 import { Board } from './board'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const makeSut = (params?: any): { sut: Board } => ({
   sut: new Board(params)
 })
