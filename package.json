@@ -18,6 +18,7 @@
     "@commitlint/cli": "^17.0.3",
     "@kopplin/commitlint-config": "^1.2.0",
     "@kopplin/eslint-config": "^1.1.0",
+    "@kopplin/prettier-config": "^1.2.0",
     "@types/jest": "^28.1.4",
     "eslint": "^8.19.0",
     "husky": "^8.0.1",
@@ -32,9 +33,10 @@
       "./node_modules/.bin/eslint --fix",
       "./node_modules/.bin/tsc --noEmit"
     ],
-    "*.{js,ts,json}": "npm run test:staged"
+    "*.{js,ts,json}": "npm run test:staged -- --passWithNoTests"
   },
   "dependencies": {
     "immer": "^9.0.15"
-  }
+  },
+  "prettier": "@kopplin/prettier-config"
 }
