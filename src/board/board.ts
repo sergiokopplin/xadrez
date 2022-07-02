@@ -1,12 +1,6 @@
 import produce from 'immer'
 
-import { defaultRows, getPositionAxis, Position, whitePieces } from '../utils'
-
-export interface Square {
-  piece: string
-}
-
-export type Color = 'black' | 'white'
+import { Color, defaultRows, getPositionAxis, Position, Square, whitePieces } from '../utils'
 
 export class Board {
   public board: Square[]
