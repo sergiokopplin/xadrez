@@ -12,7 +12,9 @@
     "test:staged": "jest --bail --findRelatedTests",
     "prepare": "husky install",
     "commit": "git-cz",
-    "cm": "npm run commit"
+    "cm": "npm run commit",
+    "lint": "./node_modules/.bin/eslint src",
+    "lint:type": "./node_modules/.bin/tsc --noEmit"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
