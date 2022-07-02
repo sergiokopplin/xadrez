@@ -4,13 +4,13 @@ import { makePiece } from '../pieces/factories'
 import { Color, defaultRows, getPositionAxis, Position, Square, whitePieces } from '../utils'
 
 export class Board {
-  public board: Square[]
+  public board: Square[][]
 
   constructor () {
     this.board = this.populateBoard()
   }
 
-  private populateBoard (): Square[] {
+  private populateBoard (): Square[][] {
     const board = new Array(8).fill([])
     const emptyRow = new Array(8).fill(null)
 
@@ -26,6 +26,18 @@ export class Board {
     })
 
     return board
+  }
+
+  public printBoard (): string {
+    let boardPrint = ''
+    const reverseBoard = [].concat(this.board).reverse()
+
+    reverseBoard.forEach(row => {
+      boardPrint += row.map(item => item?.piece ? item.piece : '.').join('')
+      boardPrint += '\n'
+    })
+
+    return boardPrint
   }
 
   public inferPieceColor (position: Position): Color {

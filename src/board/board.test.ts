@@ -19,6 +19,13 @@ describe('Board', () => {
     })
   })
 
+  describe('printBoard', () => {
+    it('ensure board print', () => {
+      const { sut } = makeSut()
+      expect(sut.printBoard()).toMatchSnapshot()
+    })
+  })
+
   describe('inferPieceColor', () => {
     it('should return null when empty square', () => {
       const { sut } = makeSut()

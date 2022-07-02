@@ -148,3 +148,15 @@ Array [
   ],
 ]
 `;
+
+exports[`Board printBoard ensure board print 1`] = `
+"RNBQKBNR
+PPPPPPPP
+........
+........
+........
+........
+pppppppp
+rnbqkbnr
+"
+`;
