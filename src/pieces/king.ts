@@ -1,11 +1,11 @@
-import { Position } from "../utils";
-import { Piece } from "./piece";
+import { Position } from '../utils';
+import { Piece } from './piece';
 import {
   isVerticalMove,
   isHorizontalMove,
   isDiagonalMove,
   isMoreThanSingleSquare,
-} from "./validations";
+} from './validations';
 
 export class King implements Piece {
   move(current: Position, next: Position): boolean {

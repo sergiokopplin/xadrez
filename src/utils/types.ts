@@ -4,4 +4,4 @@ export type Square = { piece: string } | null;
 
 export type IBoard = Square[][];
 
-export type Color = "black" | "white";
+export type Color = 'black' | 'white';

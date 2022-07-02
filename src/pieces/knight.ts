@@ -1,10 +1,6 @@
-import { Position, getPositionAxis } from "../utils";
-import { Piece } from "./piece";
-import {
-  isVerticalMove,
-  isHorizontalMove,
-  isDiagonalMove,
-} from "./validations";
+import { Position, getPositionAxis } from '../utils';
+import { Piece } from './piece';
+import { isVerticalMove, isHorizontalMove, isDiagonalMove } from './validations';
 
 export class Knight implements Piece {
   move(current: Position, next: Position): boolean {

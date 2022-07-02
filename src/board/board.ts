@@ -1,6 +1,6 @@
-import produce from "immer";
+import produce from 'immer';
 
-import { makePiece } from "../pieces/factories";
+import { makePiece } from '../pieces/factories';
 import {
   Color,
   defaultRows,
@@ -9,7 +9,7 @@ import {
   Square,
   IBoard,
   whitePieces,
-} from "../utils";
+} from '../utils';
 
 export class Board {
   public board: IBoard;
@@ -29,7 +29,7 @@ export class Board {
         return;
       }
 
-      board[rowIndex] = item.split("").map((piece) => ({
+      board[rowIndex] = item.split('').map(piece => ({
         piece,
       }));
     });
@@ -38,16 +38,12 @@ export class Board {
   }
 
   public printBoard(): string {
-    let boardPrint = "";
-    const reverseBoard: IBoard = produce<IBoard>(this.board, (draft) =>
-      draft.reverse()
-    );
+    let boardPrint = '';
+    const reverseBoard: IBoard = produce<IBoard>(this.board, draft => draft.reverse());
 
-    reverseBoard.forEach((row) => {
-      boardPrint += row
-        .map((item) => (item?.piece ? item.piece : "."))
-        .join("");
-      boardPrint += "\n";
+    reverseBoard.forEach(row => {
+      boardPrint += row.map(item => (item?.piece ? item.piece : '.')).join('');
+      boardPrint += '\n';
     });
 
     return boardPrint;
@@ -59,7 +55,7 @@ export class Board {
 
     if (!piece) return null;
 
-    return whitePieces.includes(piece) ? "white" : "black";
+    return whitePieces.includes(piece) ? 'white' : 'black';
   }
 
   public isOpponent(ourPosition: Position, theirPosition: Position): boolean {
@@ -83,11 +79,11 @@ export class Board {
     const [y, x] = getPositionAxis(position);
 
     if (!piece) {
-      this.board = produce(this.board, (draft) => {
+      this.board = produce(this.board, draft => {
         draft[x][y] = null;
       });
     } else {
-      this.board = produce(this.board, (draft) => {
+      this.board = produce(this.board, draft => {
         draft[x][y] = { piece };
       });
     }

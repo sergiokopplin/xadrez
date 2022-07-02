@@ -1,5 +1,5 @@
-import { IBoard, Position } from "../utils";
-import { Piece } from "./piece";
+import { IBoard, Position } from '../utils';
+import { Piece } from './piece';
 import {
   hasDiagonalBlockPiece,
   hasHorizontalBlockPiece,
@@ -7,7 +7,7 @@ import {
   isDiagonalMove,
   isHorizontalMove,
   isVerticalMove,
-} from "./validations";
+} from './validations';
 
 export class Queen implements Piece {
   move(current: Position, next: Position, board: IBoard): boolean {

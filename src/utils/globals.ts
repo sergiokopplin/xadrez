@@ -9,17 +9,17 @@ export const letterFromTo: { [key: string]: number } = {
   h: 8,
 };
 
-export const whitePieces = "rnbqkp";
+export const whitePieces = 'rnbqkp';
 
-export const blackPieces = "RNBQKP";
+export const blackPieces = 'RNBQKP';
 
 export const defaultRows: Array<string | null> = [
-  "rnbqkbnr",
-  "pppppppp",
+  'rnbqkbnr',
+  'pppppppp',
   null,
   null,
   null,
   null,
-  "PPPPPPPP",
-  "RNBQKBNR",
+  'PPPPPPPP',
+  'RNBQKBNR',
 ];
