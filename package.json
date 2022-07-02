@@ -48,7 +48,7 @@
     }
   },
   "lint-staged": {
-    "*.ts": "./node_modules/.bin/eslint --fix",
+    "*.ts": ["./node_modules/.bin/eslint --fix", "./node_modules/.bin/tsc --noEmit"],
     "*.{js,ts,json}": "npm run test:staged"
   },
   "dependencies": {
