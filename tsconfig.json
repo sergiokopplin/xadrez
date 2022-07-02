@@ -1,8 +1,6 @@
 {
+  "extends": "@kopplin/ts-config",
   "compilerOptions": {
     "strict": true,
-    "esModuleInterop": true
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  }
 }
