@@ -1,7 +1,8 @@
 import { Board } from './board'
 
-const makeSut = (): { sut: Board } => ({
-  sut: new Board()
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const makeSut = (params?: any): { sut: Board } => ({
+  sut: new Board(params)
 })
 
 describe('Board', () => {
@@ -16,6 +17,14 @@ describe('Board', () => {
       const { sut } = makeSut()
 
       expect(sut.board).toMatchSnapshot()
+    })
+  })
+
+  describe('customRows', () => {
+    it('ensure board creation with custom rows', () => {
+      const { sut } = makeSut([null, null, null, 'ppppPPPP', null, null, null, null])
+
+      expect(sut.printBoard()).toMatchSnapshot()
     })
   })
 

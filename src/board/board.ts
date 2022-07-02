@@ -6,15 +6,16 @@ import { Color, defaultRows, getPositionAxis, Position, Square, whitePieces } fr
 export class Board {
   public board: Square[][]
 
-  constructor () {
-    this.board = this.populateBoard()
+  constructor (customRows?: string[]) {
+    this.board = this.populateBoard(customRows)
   }
 
-  private populateBoard (): Square[][] {
+  private populateBoard (customRows?: string[]): Square[][] {
     const board = new Array(8).fill([])
     const emptyRow = new Array(8).fill(null)
+    const rows = customRows || defaultRows
 
-    defaultRows.forEach((item, rowIndex) => {
+    rows.forEach((item, rowIndex) => {
       if (!item) {
         board[rowIndex] = emptyRow
         return
