@@ -1,4 +1,4 @@
-export const letterFromTo = {
+export const letterFromTo: { [key: string]: number } = {
   a: 1,
   b: 2,
   c: 3,
@@ -13,4 +13,4 @@ export const whitePieces = 'rnbqkp'
 
 export const blackPieces = 'RNBQKP'
 
-export const defaultRows = ['rnbqkbnr', 'pppppppp', null, null, null, null, 'PPPPPPPP', 'RNBQKBNR']
+export const defaultRows: string[] = ['rnbqkbnr', 'pppppppp', null, null, null, null, 'PPPPPPPP', 'RNBQKBNR']
