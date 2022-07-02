@@ -1,96 +1,115 @@
-import produce from 'immer'
-import { makePiece } from '../pieces/factories'
+import produce from "immer";
 
-import { Color, defaultRows, getPositionAxis, Position, Square, IBoard, whitePieces } from '../utils'
+import { makePiece } from "../pieces/factories";
+import {
+  Color,
+  defaultRows,
+  getPositionAxis,
+  Position,
+  Square,
+  IBoard,
+  whitePieces,
+} from "../utils";
 
 export class Board {
-  public board: IBoard
+  public board: IBoard;
 
-  constructor (customRows?: string[]) {
-    this.board = this.populateBoard(customRows)
+  constructor(customRows?: string[]) {
+    this.board = this.populateBoard(customRows);
   }
 
-  private populateBoard (customRows?: string[]): IBoard {
-    const board = new Array(8).fill([])
-    const emptyRow = new Array(8).fill(null)
-    const rows = customRows || defaultRows
+  private populateBoard(customRows?: string[]): IBoard {
+    const board = new Array(8).fill([]);
+    const emptyRow = new Array(8).fill(null);
+    const rows = customRows ?? defaultRows;
 
     rows.forEach((item, rowIndex) => {
       if (!item) {
-        board[rowIndex] = emptyRow
-        return
+        board[rowIndex] = emptyRow;
+        return;
       }
 
-      board[rowIndex] = item.split('').map(piece => ({
-        piece
-      }))
-    })
+      board[rowIndex] = item.split("").map((piece) => ({
+        piece,
+      }));
+    });
 
-    return board
+    return board;
   }
 
-  public printBoard (): string {
-    let boardPrint = ''
-    const reverseBoard: IBoard = produce<IBoard>(this.board, draft => draft.reverse())
+  public printBoard(): string {
+    let boardPrint = "";
+    const reverseBoard: IBoard = produce<IBoard>(this.board, (draft) =>
+      draft.reverse()
+    );
 
-    reverseBoard.forEach(row => {
-      boardPrint += row.map(item => item?.piece ? item.piece : '.').join('')
-      boardPrint += '\n'
-    })
+    reverseBoard.forEach((row) => {
+      boardPrint += row
+        .map((item) => (item?.piece ? item.piece : "."))
+        .join("");
+      boardPrint += "\n";
+    });
 
-    return boardPrint
+    return boardPrint;
   }
 
-  public inferPieceColor (position: Position): Color | null {
-    const [y, x] = getPositionAxis(position)
-    const piece = this.board[x][y]?.piece
+  public inferPieceColor(position: Position): Color | null {
+    const [y, x] = getPositionAxis(position);
+    const piece = this.board[x][y]?.piece;
 
-    if (!piece) return null
+    if (!piece) return null;
 
-    return whitePieces.includes(piece) ? 'white' : 'black'
+    return whitePieces.includes(piece) ? "white" : "black";
   }
 
-  public isOpponent (ourPosition: Position, theirPosition: Position): boolean {
-    const ourColor = this.inferPieceColor(ourPosition)
-    const theirColor = this.inferPieceColor(theirPosition)
+  public isOpponent(ourPosition: Position, theirPosition: Position): boolean {
+    const ourColor = this.inferPieceColor(ourPosition);
+    const theirColor = this.inferPieceColor(theirPosition);
 
     if (!ourColor || !theirColor) {
-      return false
+      return false;
     }
 
-    return ourColor !== theirColor
+    return ourColor !== theirColor;
   }
 
-  public getSquare (position: Position): Square {
-    const [y, x] = getPositionAxis(position)
+  public getSquare(position: Position): Square {
+    const [y, x] = getPositionAxis(position);
 
-    return this.board[x][y]
+    return this.board[x][y];
   }
 
-  public setPiece (piece: string | null, position: Position): void {
-    const [y, x] = getPositionAxis(position)
+  public setPiece(piece: string | null, position: Position): void {
+    const [y, x] = getPositionAxis(position);
 
     if (!piece) {
-      this.board = produce(this.board, draft => { draft[x][y] = null })
+      this.board = produce(this.board, (draft) => {
+        draft[x][y] = null;
+      });
     } else {
-      this.board = produce(this.board, draft => { draft[x][y] = { piece } })
+      this.board = produce(this.board, (draft) => {
+        draft[x][y] = { piece };
+      });
     }
   }
 
-  public isEmptySquare (position: Position): boolean {
-    return !this.getSquare(position)
+  public isEmptySquare(position: Position): boolean {
+    return !this.getSquare(position);
   }
 
-  public move (current: Position, next: Position): void {
-    const currentSquare = this.getSquare(current)
+  public move(current: Position, next: Position): void {
+    const currentSquare = this.getSquare(current);
 
-    if (!currentSquare) return
+    if (!currentSquare) return;
 
-    const currentPiece = makePiece(currentSquare.piece)
+    const currentPiece = makePiece(currentSquare.piece);
 
-    if ((this.isEmptySquare(next) || this.isOpponent(current, next)) && currentPiece.move(current, next, this.board)) {
-      this.setPiece(null, current)
-      this.setPiece(currentSquare.piece, next)
+    if (
+      (this.isEmptySquare(next) || this.isOpponent(current, next)) &&
+      currentPiece.move(current, next, this.board)
+    ) {
+      this.setPiece(null, current);
+      this.setPiece(currentSquare.piece, next);
     }
   }
 }

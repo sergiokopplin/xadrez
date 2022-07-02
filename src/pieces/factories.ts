@@ -1,10 +1,10 @@
-import { Bishop } from './bishop'
-import { King } from './king'
-import { Knight } from './knight'
-import { Pawn } from './pawn'
-import { Piece } from './piece'
-import { Queen } from './queen'
-import { Rook } from './rook'
+import { Bishop } from "./bishop";
+import { King } from "./king";
+import { Knight } from "./knight";
+import { Pawn } from "./pawn";
+import { Piece } from "./piece";
+import { Queen } from "./queen";
+import { Rook } from "./rook";
 
 const PiecesFromTo: { [key: string]: Piece } = {
   r: new Rook(),
@@ -18,9 +18,9 @@ const PiecesFromTo: { [key: string]: Piece } = {
   B: new Bishop(),
   Q: new Queen(),
   K: new King(),
-  P: new Pawn()
-}
+  P: new Pawn(),
+};
 
 export const makePiece = (piece: string): Piece => {
-  return PiecesFromTo[piece]
-}
+  return PiecesFromTo[piece];
+};

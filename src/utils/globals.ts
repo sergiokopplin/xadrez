@@ -6,11 +6,20 @@ export const letterFromTo: { [key: string]: number } = {
   e: 5,
   f: 6,
   g: 7,
-  h: 8
-}
+  h: 8,
+};
 
-export const whitePieces = 'rnbqkp'
+export const whitePieces = "rnbqkp";
 
-export const blackPieces = 'RNBQKP'
+export const blackPieces = "RNBQKP";
 
-export const defaultRows: (string | null)[] = ['rnbqkbnr', 'pppppppp', null, null, null, null, 'PPPPPPPP', 'RNBQKBNR']
+export const defaultRows: Array<string | null> = [
+  "rnbqkbnr",
+  "pppppppp",
+  null,
+  null,
+  null,
+  null,
+  "PPPPPPPP",
+  "RNBQKBNR",
+];
