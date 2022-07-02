@@ -2,11 +2,8 @@
   "name": "chess",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "",
   "scripts": {
-    "start": "node dist/app.js",
-    "build": "babel src --out-dir dist --no-copy-ignored",
-    "dev": "nodemon --watch 'src/' --exec 'ts-node src/app.ts' -e ts",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "test:staged": "jest --bail --findRelatedTests",
@@ -17,10 +14,7 @@
     "lint:type": "./node_modules/.bin/tsc --noEmit"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.1",
-    "@babel/node": "^7.10.5",
-    "@babel/preset-env": "^7.11.0",
     "@babel/preset-typescript": "^7.10.4",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
@@ -40,9 +34,7 @@
     "jest": "^26.4.0",
     "jest-sonar-reporter": "^2.0.0",
     "lint-staged": "^13.0.3",
-    "nodemon": "^2.0.4",
     "ts-jest": "^26.2.0",
-    "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   },
   "config": {
@@ -51,7 +43,10 @@
     }
   },
   "lint-staged": {
-    "*.ts": ["./node_modules/.bin/eslint --fix", "./node_modules/.bin/tsc --noEmit"],
+    "*.ts": [
+      "./node_modules/.bin/eslint --fix",
+      "./node_modules/.bin/tsc --noEmit"
+    ],
     "*.{js,ts,json}": "npm run test:staged"
   },
   "dependencies": {
