@@ -1,5 +1,5 @@
 {
-  "extends": ["@kopplin/eslint-config"],
+  "extends": "@kopplin/eslint",
   "parserOptions": {
     "project": "tsconfig.json"
   }

@@ -1,1 +1,1 @@
-module.exports = { extends: ['@kopplin/commitlint-config'] };
+module.exports = { extends: ['@kopplin/commitlint'] };

@@ -1,5 +1,5 @@
 {
-  "extends": "@kopplin/ts-config",
+  "extends": "@kopplin/tsconfig",
   "compilerOptions": {
     "strict": true,
   }
