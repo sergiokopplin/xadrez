@@ -37,7 +37,7 @@
     "*.{js,ts,json}": "npm run test:staged -- --passWithNoTests"
   },
   "dependencies": {
-    "immer": "^9.0.15"
+    "immer": "^9.0.16"
   },
   "prettier": "@kopplin/prettier"
 }
